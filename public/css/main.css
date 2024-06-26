@@ -1,0 +1,207 @@
+.slim_scroll {
+    display: block;
+    overflow: auto;
+}
+
+
+.slim_scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.slim_scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.scroll_2_slim::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+.slim_scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #c3c3c3;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+
+.d-none {
+    display: none !important;
+}
+
+
+
+#preloader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    overflow: hidden;
+    background: #fff;
+}
+
+#preloader:before {
+    content: '';
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #23b7e5;
+    border-top-color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-preloader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.dataTables_processing {
+    box-shadow: 0 2px 20px rgb(204 197 185 / 50%) !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+[name="datatables_length"] , .dataTables_length label select{
+    width: 65px !important;
+}
+
+
+
+
+
+div.dataTables_wrapper table.dataTable {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.theme-color {
+    background-color: #f8ae4c !important;
+}
+
+.btn-theme {
+    background-color: #f8ae4c !important;
+}
+
+.btn:before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    -webkit-transition-property: transform, opacity;
+    transition-property: transform, opacity;
+    transition: all 400ms ease;
+}
+
+.btn {
+    color: #ffffff;
+    background: #f8ae4c;
+    border: 1px solid #f8ae4c;
+    border-color: #f8ae4c;
+}
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid;
+    padding: 9px 22px;
+    border-radius: 5px;
+    position: relative;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.btn:hover {
+    -webkit-transform: translateY(-5px) !important;
+    transform: translateY(-5px) !important;
+}
+
+.btn:hover {
+    text-decoration: none !important;
+}
+
+
+.btn:hover:before {
+    opacity: 1;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+}
+
+.btn:before {
+    background: -webkit-radial-gradient(center, ellipse, rgb(255 155 22 / 50%) 0%, rgba(0, 0, 0, 0) 80%);
+    background: radial-gradient(ellipse at center, rgb(255 155 22 / 50%) 0%, rgba(0, 0, 0, 0) 80%);
+}
+
+.theme-color th {
+    color: #fff !important;
+}
+
+.table td, .table th {
+    padding: 0.75rem !important;
+    vertical-align: top !important;
+    border-top: 1px solid #e3eaef !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+div.dataTables_wrapper table.dataTable thead .sorting_asc, div.dataTables_wrapper table.dataTable thead .sorting_desc {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.card-margined {
+    margin-top: 10px;
+}
+
+html[data-footer=true] #root>footer {
+    bottom: unset !important;
+}
+
+body {
+    min-height: calc(100vh) !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: white;
+    background: #f8ae4c;
+}
+
+.float-right {
+    float: right !important;
+}
