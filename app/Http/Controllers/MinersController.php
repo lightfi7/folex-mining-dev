@@ -166,6 +166,8 @@ class MinersController extends Controller
         $setting = Setting::first();
         $hashing = in_array($hashing, [1,2,3]) ? $hashing : 1;
         $hash_price = $pricing[$hashing-1];
+        print($cash);
+        print($setting->$hash_price);
         $p = $cash / $setting->$hash_price;
         return $p;
     }
@@ -194,8 +196,8 @@ class MinersController extends Controller
 
 
         //Check Coin Data
-        $coin_data_obj = CoinData::where("id", $request->coin_data_id)
-                                    ->where("hashing_id", $request->hashing)
+        // $coin_data_obj = CoinData::where("id", $request->coin_data_id)
+        $coin_data_obj = CoinData::where("hashing_id", $request->hashing)
                                     ->where("is_active", 1)
                                     ->first();
         if(!$coin_data_obj)
