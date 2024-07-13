@@ -17,19 +17,19 @@ class ReferralsController extends Controller
 
     public function index()
     {
+//#region TEST REQUEST
+        // $response = Http::get('http://localhost:5000/');
 
-        $response = Http::get('http://localhost:5000/');
-
-        // Check if the request was successful
-        if ($response->successful()) {
-            $data = $response->json();
-            // Do something with the data
-            var_dump($response->json());
-            return;
-        } else {
-            // Handle the error
-        }
-        
+        // // Check if the request was successful
+        // if ($response->successful()) {
+        //     $data = $response->json();
+        //     // Do something with the data
+        //     var_dump($response->json());
+        //     return;
+        // } else {
+        //     // Handle the error
+        // }
+//#endregion
 
         $directory = $this->directory;
         $title_singular = __($this->title_singular);

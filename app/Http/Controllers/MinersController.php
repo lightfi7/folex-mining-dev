@@ -497,6 +497,8 @@ class MinersController extends Controller
         return 1;
     }
 
+    //#region COINPAYMENT
+    //#endregion
     public function coin_payment(Request $request){
 
         $hashing = $request->hashing;
