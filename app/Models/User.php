@@ -36,7 +36,8 @@ class User extends Authenticatable
         'role_id',
         'email',
         'password',
-        'referred_by'
+        'referral',
+        'two_factor_secret'
     ];
 
     /**
@@ -80,5 +81,4 @@ class User extends Authenticatable
     public static function get_record_public($public_id){
         return User::where("public_id", $public_id)->first();
     }
-
 }

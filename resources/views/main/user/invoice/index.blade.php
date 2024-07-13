@@ -110,11 +110,11 @@
                                                             <div class="slim_scroll pb-5">
                                                                 <table class="table" id="datatables-withdrawl" style="width:100% !important;">
                                                                     <thead>
-                                                                        <th>Withdrawal Date</th>
-                                                                        <th>Transaction ID</th>
-                                                                        <th>Withdrawal Method</th>
-                                                                        <th>Total Withdraw</th>
-                                                                        <th>Action</th>
+                                                                        <th>{{__("Withdrawal Date")}}</th>
+                                                                        <th>{{__("Transaction ID")}}</th>
+                                                                        <th>{{__("Withdrawal Method")}}</th>
+                                                                        <th>{{__("Total Withdraw")}}</th>
+                                                                        <th>{{__("Action")}}</th>
                                                                     </thead>
                                                                     <tbody>
 

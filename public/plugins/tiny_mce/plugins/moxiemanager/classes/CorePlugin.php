@@ -316,7 +316,7 @@ class MOXMAN_CorePlugin implements MOXMAN_IPlugin, MOXMAN_ICommandHandler, MOXMA
 
 			// Was this last image in folder, if so, delete it.
 			$thumbnailFolder = $thumbnailFile->getParentFile();
-			if (count($thumbnailFolder->listFiles()->limit(0, 1)->toArray()) == 0) {
+			if (count($thumbnailFolder->listFiles()->limit(1)->toArray()) == 0) {
 				$thumbnailFolder->delete();
 
 				$args = new MOXMAN_Vfs_FileActionEventArgs(MOXMAN_Vfs_FileActionEventArgs::DELETE, $thumbnailFolder);

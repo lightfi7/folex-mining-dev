@@ -33,4 +33,27 @@
         <label class="form-label form-label-lg">{{__("Confirm Password")}} <i class="text-danger">*</i></label>
         <input class="form-control form-control-xl" name="password_confirmation" placeholder="{{__("Confirm Password")}}" id="password_confirmation" type="password">
     </div>
+
+    <div class="col-md-6 pb-3 mb-md-4">
+        <label class="form-label form-label-lg">{{__("Street")}}</label>
+        <input class="form-control form-control-xl" name="street" placeholder="{{__("Street")}}" id="street" type="text">
+    </div>
+
+    <div class="col-md-6 pb-3 mb-md-4">
+        <label class="form-label form-label-lg">{{__("Zip")}}</label>
+        <input class="form-control form-control-xl" name="zip" placeholder="{{__("Zip")}}" id="zip" type="text">
+    </div>
+
+    <div class="col-md-6 pb-3 mb-md-4">
+        <label class="form-label form-label-lg">{{__("Town")}}</label>
+        <input class="form-control form-control-xl" name="town" placeholder="{{__("Town")}}" id="town" type="text">
+    </div>
+
+    <div class="col-md-6 pb-3 mb-md-4">
+        <label class="form-label form-label-lg">{{__("Select a country")}}</label>
+        <select id="country" name="country" required>
+            <option value="">{{__("Select a country")}}</option>
+        </select>
+    </div>
+
 </div>

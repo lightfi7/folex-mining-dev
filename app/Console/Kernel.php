@@ -28,6 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('queue:checkup')->everyFiveMinutes();
+        // $schedule->command('queue:checkup')->everyMinute();
         $schedule->command('wallet:update')->everyThirtyMinutes();
         $schedule->command('coins:update')->everyTenMinutes();
         $schedule->command('sync:mailchimp')->daily();

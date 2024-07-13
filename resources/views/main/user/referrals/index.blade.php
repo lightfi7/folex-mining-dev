@@ -33,10 +33,10 @@
                             <div class="card mb-4 rounded-12 shadow border border-gray-50">
                                 <div class="card-body p-3 p-xl-3 p-xxl-4 row">
                                     <div class='col-md-8'>
-                                        <input class='form-control form-control-lg' value='{{url('register?referral=').Auth::user()->public_id}}' disabled>
+                                        <input class='form-control form-control-lg' value='{{url('register?ref=').Auth::user()->referral}}' disabled>
                                     </div>
                                     <div class='col-md-4'>
-                                        <a onclick="copy_url('{{url('register?referral=').Auth::user()->public_id}}')" class="btn btn-warning btn-lg float-right">{{__("Copy Referral Link")}}</a>
+                                        <a onclick="copy_url('{{url('register?ref=').Auth::user()->referral}}')" class="btn btn-primary btn-lg float-right copy-referral-link">{{__("Copy Referral Link")}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -58,10 +58,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="user-profile">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: {{ $ref_progress }}%;" aria-valuemin="0" aria-valuemax="100">{{ $refered_by_user-$referrals_from_for_current_level }}&nbsp;/&nbsp;{{ $refered_by_user-$referrals_from_for_current_level + $remained_referrals_for_next_level }}</div>
+                                        </div>
+                                        <div class="under-progress">
+                                            <div>
+                                                <!-- <i class="fas fa-unlock-alt"></i>                                            -->
+                                                <strong>{{__("Level")}}&nbsp;{{@$ref_level}}</strong>
+                                            </div>
+                                            <div class="next-level">
+                                                <i class="fas fa-lock"></i>
+                                                {{__("Level")}}&nbsp;{{@($ref_level + 1) }}
+                                            </div>
+                                        </div>
+                                        <div class="level-up-comment">
+                                            @if ($remained_referrals_for_next_level > 0)
+                                            <hr>
+                                            <div class="tip">
+                                                {{__("Unlock Your Next Level with")}} <strong>{{@$remained_referrals_for_next_level}}</strong> {{$remained_referrals_for_next_level == 1 ? __('Referral') : _('Referrals')}}!
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="col-md-6 col-12">
                             <div class="card mb-4 rounded-12 shadow border border-gray-50">

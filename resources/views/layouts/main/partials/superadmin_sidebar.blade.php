@@ -71,6 +71,13 @@
                 </a>
             </li>
 
+            <li class="nav-item coin-settings">
+                <a class="nav-link" href="{{url('ref-settings')}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <i class="fa fa-cog fa-lg" data-acorn-size="18"></i>
+                    &nbsp;<span class="ms-2">Referral Settings</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

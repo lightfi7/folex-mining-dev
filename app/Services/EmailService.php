@@ -35,7 +35,7 @@ class EmailService extends Mailable
     }    
 
     public function send_email($email_data){
-        dispatch(new SendMailJob($email_data));
+        dispatch(new SendMailJob($email_data)); // later undel
     }
     
 }

@@ -38,8 +38,10 @@ class WithdrawController extends Controller
 
         $banks = UserBank::where("user_id", Auth::user()->id)->get();
         $cryptos = UserCrypto::where("user_id", Auth::user()->id)->with("crypto_options")->get();
-
-        return view($this->directory . "index", compact('title_singular', 'directory','active_item', 'form_button', 'coin_data', 'user_balance', 'banks', 'cryptos'));
+        
+        $user_data = User::where("id", "=", Auth::user()->id)->first();
+        // dd($user_data);
+        return view($this->directory . "index", compact('title_singular', 'directory','active_item', 'form_button', 'coin_data', 'user_balance', 'banks', 'cryptos', 'user_data'));
     }  
 
 

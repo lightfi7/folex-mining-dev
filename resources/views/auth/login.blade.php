@@ -22,7 +22,7 @@
             <input id="password" type="password" class="form-control form-control-xl" name="password" required autocomplete="current-password" placeholder="{{__("Password")}}">
         </div>
         <div class="d-grid">
-            <button type="submit" class="btn btn-xl btn-warning">{{__("Sign In")}}</button>
+            <button type="submit" class="btn btn-xl btn-primary">{{__("Sign In")}}</button>
         </div>
         <div class="my-3 my-sm-4 d-flex">
             <div class="form-check form-check-sm mb-0">

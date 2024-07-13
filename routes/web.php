@@ -15,47 +15,28 @@ Route::middleware('locale')->group(function () {
     Route::get('test', controller_path() . 'TestController@test');
     Route::get('/', controller_path() . 'CalculationController@index');
 
-    // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    //     $request->fulfill();
-    //     return redirect('/home');
-    // })->middleware(['auth', 'signed'])->name('verification.verify');
-
-    // Route::post('/email/verification-notification', function (Request $request) {
-    //     $request->user()->sendEmailVerificationNotification();
-    //     return back()->with('message', 'Verification link sent!');
-    // })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-    //mail_verification
-    // Route::get('/email/verify', function () {
-    //     return view('auth.verify-email');
-    // })->middleware('auth')->name('verification.notice');
-
-
-    // Route::get('/clear', function () {
-    //     $exitCode = Artisan::call('config:clear');
-    //     $exitCode = Artisan::call('cache:clear');
-    //     $exitCode = Artisan::call('view:clear');
-    //     $exitCode = Artisan::call('route:clear');
-    //     $exitCode = Artisan::call('config:cache');
-    //     $exitCode = Artisan::call('optimize:clear');
-    //     return 'All clear!!'; //Return anything
-    // });
-
 
     //TEMPORARY REMOVE FROM HERE AND UNCOMMENT IN SUPERADMIN SECTION
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
     Route::get("terms", controller_path() . "HomeController@terms");
     Route::get("privacy", controller_path() . "HomeController@privacy");
+    Route::get("email/verify", controller_path() . "EmailVerificationController@index");
+    Route::post("email/verify", controller_path() . "EmailVerificationController@verifyOtp");
+    Route::get("2fa/verify", controller_path() . "TwoFactorController@index");
+    Route::post("two-factor-challenge", controller_path() . "TwoFactorController@validate_2fa");
 
+    Route::group(['middleware' => ['auth', 'verified', '2fa']], function () {
 
-    Route::group(['middleware' => ['auth']], function () {
+        // Route::get("two-factor-challenge", controller_path() . "TwoFactorController@index");
 
-        Route::get("two-factor-challenge", controller_path() . "TwoFactorController@index");
-        Route::post("two-factor-challenge", controller_path() . "TwoFactorController@validate_2fa");
+        Route::post("account/kyc", controller_path() . 'AccountController@getAccessToken');
         
-        Route::group(['middleware' => ['2fa']], function () {
 
+        Route::get("twofactor", controller_path() . 'TwoFactorController@index');
+        Route::post("twofactor", controller_path() . 'TwoFactorController@enable_2fa');
+        Route::post("twofactor/disable", controller_path() . 'TwoFactorController@disable_2fa');
+        
             //*****************ALL*********************/
             Route::group(['middleware' => ['role:superadmin|admin|user']], function () {
 
@@ -83,6 +64,8 @@ Route::middleware('locale')->group(function () {
                 //COIN SETTINGS
                 Route::resource("coin-settings", controller_path() . "CoinSettingController");
                 Route::get("delete-coin-settings/{id}", controller_path() . "CoinSettingController@destroy");
+
+
 
                 //ADMIN
                 Route::resource("admins", controller_path() . "AdminController");
@@ -121,6 +104,11 @@ Route::middleware('locale')->group(function () {
                 Route::resource("users", controller_path() . "UserController");
                 Route::get("user-listing", controller_path() . "UserController@get_listing");
                 Route::get("delete-user/{id}", controller_path() . "UserController@destroy");
+                Route::post("2fa/deactivate", controller_path() . "UserController@deactivate2fa");
+
+                //Ref Settings
+                Route::resource('ref-settings', controller_path() . "RefLevelController");
+                Route::get('ref-settings/delete/{id}', controller_path() . "RefLevelController@destroy");
             });
 
             //*****************User*********************/
@@ -170,7 +158,7 @@ Route::middleware('locale')->group(function () {
                 Route::get("invoice/{public_id}", controller_path() . "InvoiceController@show");
                 Route::get("invoice-pdf/{public_id}", controller_path() . "InvoiceController@pdf");
             });
-        });
+        
     });
 
 });

@@ -15,15 +15,15 @@ use App\Models\User;
 
 class LanguageController extends Controller
 {
-    public function lang($locale) 
+    public function lang(Request $request, $locale) 
     {
-        $this->update_locale($locale);
+        $this->update_locale($request, $locale);
         if (!request()->ajax()) {
             return redirect()->back();
         }
     }
 
-    public function update_locale($locale){
+    public function update_locale($request, $locale){
         session()->put('locale', $locale);
         app()->setLocale($locale);
         if(\Auth::check()){
@@ -34,5 +34,6 @@ class LanguageController extends Controller
                 "locale" => $locale
             ]);
         }
+        $request->session()->flash('locale_for_none_user', $locale);
     }
 }

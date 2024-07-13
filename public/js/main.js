@@ -186,18 +186,20 @@ function submit_form(method, url, form, obj = null, reloadOnSuccess = false, got
 
 
             $(".alert_div").html("");
-            $.each(response, function(index, value) {
-                // console.log(value)
-                if (value.success) {
-                    setAlert(value.success, "success", 1);
-                } else if (value.error) {
-                    setAlert(value.error, "error");
-                }
-            });
+            try {
+                $.each(response, function(index, value) {
+                    console.log(value);
+                    if (value.success) {
+                        setAlert(value.success, "success", 1);
+                    } else if (value.error) {
+                        setAlert(value.error, "error");
+                    }
+                });    
+            } catch(ex) {
+            }
 
             $(obj).find('.submit-btn').removeAttr("disabled");
             $(obj).find('.submit-btn').text(btn_text);
-
         },
     }).fail(function(result) {
         $(".alert_div").html("");

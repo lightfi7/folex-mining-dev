@@ -14,7 +14,7 @@
         </div>
         
         <div class="d-grid">
-            <button type="submit" class="btn btn-xl btn-warning">{{__("Reset")}}</button>
+            <button type="submit" class="btn btn-xl btn-primary">{{__("Reset")}}</button>
         </div>
         <div class="my-3 my-sm-4 d-flex">
             <a class="small text-gray-600 ms-auto mt-1" href="{{ route('login') }}">{{__("Back to login?")}}</a>

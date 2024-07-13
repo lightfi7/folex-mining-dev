@@ -4,20 +4,20 @@
             @include("shared.alerts")
 
             <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative zIndex-0" id="pills-tab" role="tablist">
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link active" onclick="set_payment_method(1)" id="pills-card-tab" data-bs-toggle="pill" data-bs-target="#pills-card" type="button" role="tab" aria-controls="pills-card" aria-selected="true">{{__("Card")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-bank-tab" onclick="set_payment_method(2)" data-bs-toggle="pill" data-bs-target="#pills-bank" type="button" role="tab" aria-controls="pills-bank" aria-selected="false">{{__("Bank Transfer")}}</a>
-                </li> -->
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-coin-tab" onclick="set_payment_method(3)" data-bs-toggle="pill" data-bs-target="#pills-coin" type="button" role="tab" aria-controls="pills-coin" aria-selected="false">{{__("Coinbase")}}</a>
+                    <a class="nav-link" id="pills-coin-tab" onclick="set_payment_method(3)" data-bs-toggle="pill" data-bs-target="#pills-coin" type="button" role="tab" aria-controls="pills-coin" aria-selected="false">{{__("Coinbase")}}</a>
                 </li>
             </ul>
 
 
             <div class="tab-content py-3 py-lg-3" id="pills-tabContent ">
-                <!-- <div class="tab-pane fade show active" id="pills-card" role="tabpanel" aria-labelledby="pills-card-tab">
+                <div class="tab-pane fade show active" id="pills-card" role="tabpanel" aria-labelledby="pills-card-tab">
                     @if(!blank($ending_at))
                     <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5 px-3 px-xxl-3 py-3">
                         <div class="card-body h-100">
@@ -82,9 +82,9 @@
 
                         </div>
                     </div>
-                </div> -->
+                </div>
 
-                <div class="tab-pane fade show active" id="pills-coin" role="tabpanel" aria-labelledby="pills-coin-tab">
+                <div class="tab-pane fade" id="pills-coin" role="tabpanel" aria-labelledby="pills-coin-tab">
                     <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5 px-3 px-xxl-3 py-3">
                         <div class="card-body h-100">
 

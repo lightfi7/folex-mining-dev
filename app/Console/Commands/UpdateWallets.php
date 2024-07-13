@@ -78,6 +78,49 @@ class UpdateWallets extends Command
 
             $result = $fetch_result[1]; 
 
+        
+            $minused_amount = 0;
+            $percents = [4, 2, 1, 0.5, 0.25];
+            for ($i = 1; $i <= 5; $i++) {
+                // 1. Lvl: 4%
+                // 2. LvL: 2%
+                // 3. LvL: 1%
+                // 4. LvL: 0.5%
+                // 5. LvL: 0.25%
+                $ref_parent = get_referral_parent($payment->user_id, $i);
+                if ($ref_parent == null) {
+                    break;
+                }
+                $ref_balance_to_add = $result["daily"] * $percents[$i-1] / 100;
+                // USER WALLET SETUP
+                $wallet = Wallet::where("user_id", $ref_parent->id)->first();
+                $is_new = false;
+                if(!$wallet){
+                    $wallet = new Wallet();
+                    $wallet->user_id = $ref_parent->id;
+                    $is_new = true;
+                }
+                $wallet->balance = $is_new ? $ref_balance_to_add : ($wallet->balance + $ref_balance_to_add);     
+                $wallet->save();
+                // UPDATING LEDGER
+                if ($ref_parent) {
+                    $ledger = new Ledger();
+                    $ledger->public_id = (string) Str::uuid();
+                    $ledger->user_id = $ref_parent->id;
+                    $ledger->current_wallet_balance = $wallet->balance;
+                    $ledger->amount = $ref_balance_to_add;
+                    $ledger->type = 3;
+                    $ledger->payment_id = $payment->id;
+                    $ledger->hashing_id = $payment->hashing_id;
+                    $ledger->coin_data_id = $payment->coin_data_id;
+                    $ledger->coin_value = to_btc_format(convert_to_coin_earning($coin_data->price, $result["daily"]));
+                    $ledger->action_performmed_at = date("Y-m-d H:i:s", strtotime($payment->last_wallet_updated. "+24 Hours"));
+                    $ledger->save();    
+                }
+
+                $minused_amount += $ref_balance_to_add;
+            }
+
             // USER WALLET SETUP
             $wallet = Wallet::where("user_id", $payment->user_id)->first();
             $is_new = false;
@@ -86,27 +129,25 @@ class UpdateWallets extends Command
                 $wallet->user_id = $payment->user_id;
                 $is_new = true;
             }
-            $wallet->balance = $is_new ? $result["daily"] : ($wallet->balance + $result["daily"]);     
+            $wallet->balance = $is_new ? $result["daily"] - $minused_amount : ($wallet->balance + $result["daily"] - $minused_amount);     
             $wallet->save();
-
             //UPDATING LEDGER
             $ledger = new Ledger();
             $ledger->public_id = (string) Str::uuid();
             $ledger->user_id = $payment->user_id;
             $ledger->current_wallet_balance = $wallet->balance;
-            $ledger->amount = $result["daily"];
+            $ledger->amount = $result["daily"] - $minused_amount;
             $ledger->type = 4;
             $ledger->payment_id = $payment->id;
             $ledger->hashing_id = $payment->hashing_id;
             $ledger->coin_data_id = $payment->coin_data_id;
-            $ledger->coin_value = to_btc_format(convert_to_coin_earning($coin_data->price, $result["daily"]));
+            $ledger->coin_value = to_btc_format(convert_to_coin_earning($coin_data->price, $result["daily"] - $minused_amount));
             $ledger->action_performmed_at = date("Y-m-d H:i:s", strtotime($payment->last_wallet_updated. "+24 Hours"));
             $ledger->save();
 
 
             $payment->last_wallet_updated = date("Y-m-d H:i:s", strtotime($payment->last_wallet_updated. "+24 Hours"));
-            $payment->save();
-            
+            $payment->save();            
         }
     
     }

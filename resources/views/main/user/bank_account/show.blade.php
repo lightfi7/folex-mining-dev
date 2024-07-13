@@ -30,7 +30,7 @@
                     <div class="card-body px-0 p-md-4">
                         <div class="bd-example px-3">
                             @include($directory."partials.form")
-                            <a href="{{url("bank-account")."/".@$record->public_id."/edit"}}" class="btn btn-warning btn-lg">{{__("Edit")}}</a>
+                            <a href="{{url("bank-account")."/".@$record->public_id."/edit"}}" class="btn btn-primary btn-lg">{{__("Edit")}}</a>
                         </div>
                     </div>
                 </div>

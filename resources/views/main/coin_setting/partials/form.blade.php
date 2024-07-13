@@ -88,27 +88,27 @@
         
         {{-- <a style='text-decoration: none !important; text-black'><small><b>API Buttons: </b><small></a> --}}
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<total_hash>');">{{__("Total Hash Applied")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<total_hash>');">{{__("Total Hash Applied")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<network_hashrate>');">{{__("Network Hashrate")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<network_hashrate>');">{{__("Network Hashrate")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<difficulty>');">{{__("Difficulty")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<difficulty>');">{{__("Difficulty")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<reward>');">{{__("Reward")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<reward>');">{{__("Reward")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<reward_block>');">{{__("Reward Block")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<reward_block>');">{{__("Reward Block")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<price>');">{{__("Price")}}</a> 
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<price>');">{{__("Price")}}</a>
         
         {{-- <br> --}}
 
         {{-- <a style='text-decoration: none !important; text-black'><small><b>Hashing Buttons: </b><small></a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<price_khs>');">{{__("Price of 1KH/s")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<price_khs>');">{{__("Price of 1KH/s")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<cost_per_kwh>');">{{__("Cost per (KWh)")}}</a>
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<cost_per_kwh>');">{{__("Cost per (KWh)")}}</a>
 
-        <a class='btn btn-sm btn-warning mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<power_consumption>');">{{__("Power Consumption (w / 1KH-s)")}}</a> --}}
+        <a class='btn btn-sm btn-primary mb-3' style='cursor: pointer' onclick="$('#formula').val($('#formula').val()+'<power_consumption>');">{{__("Power Consumption (w / 1KH-s)")}}</a> --}}
 
         <textarea placeholder="Enter Formula" class="form-control form-control-xl" name="formula" id="formula">{{@$record->formula}}</textarea>
 

@@ -12,7 +12,7 @@ $home_url = url("/");
 
             <li class="nav-item miners">
                 <a class="nav-link" href="{{url("miners")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i width="19.498" height="17.546"class="fa fa-bitcoin fa-lg" ></i>
+                    <i width="19.498" height="17.546" class="fa fa-industry" ></i>
                      &nbsp;<span class="ms-2">{{__("Miners")}}</span>
                 </a>
             </li>

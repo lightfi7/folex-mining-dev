@@ -9,8 +9,10 @@ use App\Models\Setting;
 use App\Models\User;
 use App\Models\Wallet;
 use App\Models\WithdrawRequest;
+use App\Models\UserCrypto;
 use Auth, Hash, File, Image, Session, Str;
 use Yajra\DataTables\DataTables;
+use App\Services\CryptoWithdrawalService;
 
 class WithdrawRequestController extends Controller
 {
@@ -77,7 +79,7 @@ class WithdrawRequestController extends Controller
                 }else if($records->payment_method == 3 && $records->user_cryptos){
                     //Coin
                     $model_header = "Wallet Details";
-                    $model_body = "<div><p><b>Crypto Option: </b>".$records->user_cryptos->crypto_options->name."<br><b>Crypto Wallet Address: </b>".$records->user_cryptos->wallet_address."</p></div>";
+                    $model_body = "<div><p><b>Crypto Option: </b>".$records->user_cryptos->crypto_options->name."<br><b>".__("Crypto Wallet")."Address: </b>".$records->user_cryptos->wallet_address."</p></div>";
                 }
 
                 $global_modal = "<a onclick='show_global_modal(\"" . $model_header . "\" , \"". $model_body ."\" )' class='dropdown-item'>Show Details</a>";
@@ -118,6 +120,11 @@ class WithdrawRequestController extends Controller
         $wallet->balance = $wallet->balance - $record->amount_withdraw;     
         $wallet->save();
 
+        // Process withdraw
+        $user_wallet_address = $record->user_cryptos->wallet_address;
+        $withdrawalService = new CryptoWithdrawalService();
+        $crypto_currency = $record->user_cryptos->crypto_options->name; // 'BTC'
+        $withdrawalService->withdrawCrypto($user_wallet_address, $record->amount_withdraw, $crypto_currency);
 
         //UPDATING LEDGER
         $ledger = new Ledger();

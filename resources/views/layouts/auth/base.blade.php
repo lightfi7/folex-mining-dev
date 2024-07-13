@@ -14,6 +14,15 @@ $site_data["site_logo"] = @$settings->site_logo ? (url('/').@$settings->site_log
 <head>
     @include('layouts.auth.header_includes' , $site_data)
     <title>@yield('title')</title>
+    <style>
+        .simple-login-form {
+            border: 1px solid #e3e3e3;
+        }
+        .referral-code {
+            border: 0px;
+            margin-left: 36px;
+        }
+    </style>
     @yield('css')
 </head>
 

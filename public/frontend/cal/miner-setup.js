@@ -41,6 +41,8 @@ setup.ionRangeSlider({
         console.log('here i am onStart')
         var $average = data.from;
         var $money = $average * $item_price;
+        console.log('$average', $average);
+        console.log('$item_price', $item_price);
         $investition_input.val(Math.round($money));
         $average_input.val($average);
         var $income_calc = getProfit($average,30);

@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-12 mb-3 mb-xl-5">
-                    <a href="{{url('update-coin-prices')}}" class="btn btn-warning btn-lg">Update Coin Prices</a>
+                    <a href="{{url('update-coin-prices')}}" class="btn btn-primary btn-lg">Update Coin Prices</a>
                 </div>
 
                 <form action="{{ url('settings'."/".@$record->id) }}" method="POST" class="ajax-form" class="form-horizontal">
@@ -31,7 +31,7 @@
                     @method('PUT')
                     @include($directory."partials.form")
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-warning submit-btn btn-lg">Update</button>
+                        <button type="submit" class="btn btn-primary submit-btn btn-lg">Update</button>
                     </div>
                 </form>
             </div>

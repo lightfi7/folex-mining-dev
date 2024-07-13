@@ -28,7 +28,7 @@
                 <input id="password-confirm" type="password" class="form-control form-control-xl" name="password_confirmation" required autocomplete="new-password" placeholder="{{__("Confirm Password")}}">
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-xl btn-warning">{{__("Reset Password")}}</button>
+                <button type="submit" class="btn btn-xl btn-primary">{{__("Reset Password")}}</button>
             </div>
             <div class="border-top border-gray-200 pt-3 pt-sm-4 text-center">
                 <a class="small text-gray-600 ms-auto mt-1" href="{{ route('login') }}">{{__("Back to login?")}}</a>

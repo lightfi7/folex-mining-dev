@@ -23,8 +23,8 @@
                     @include("shared.alerts")
                     <div class="row">
                         <div class="col-12 mb-5">
-                            <a class="btn btn-lg btn-warning" href="{{url('user-drequests')}}">{{__("Deposit Requests")}}</a>
-                            <a class="btn btn-lg btn-warning" href="{{url('user-wrequests')}}">{{__("Withdrawal Requests")}}</a>
+                            <a class="btn btn-lg btn-primary" href="{{url('user-drequests')}}">{{__("Deposit Requests")}}</a>
+                            <a class="btn btn-lg btn-primary" href="{{url('user-wrequests')}}">{{__("Withdrawal Requests")}}</a>
                         </div>
 
                         <div class="col-6">

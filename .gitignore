@@ -20,6 +20,8 @@ public_html/hot
 
 storage/*.key
 .env
+.env.live
+.env-origin
 Homestead.yaml
 Homestead.json
 /.vagrant
@@ -30,3 +32,4 @@ nginx.foreach
 
 
 /template/
+composer.lock

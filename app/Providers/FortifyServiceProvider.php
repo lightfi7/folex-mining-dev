@@ -40,26 +40,8 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         Fortify::authenticateUsing(function (Request $request) {
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();        
             if ($user && Hash::check($request->password, $user->password)) {
-                $user->two_factor_secret = encrypt(random_int(10000000, 99999999));
-                $user->save();
-
-                // if($user->role_id == 3){
-                    try {
-                        $email_data = [
-                            'code' => decrypt($user->two_factor_secret),
-                            'to_name' => $user->first_name
-                        ];
-
-                        info("Code: ". $email_data["code"]);
-                        // Mail::to($user->email)->send(new SendCodeMail($email_data));
-
-                    } catch (Exception $e) {
-                        info("Error: ". $e->getMessage());
-                    }
-                // }
-
                 return $user;
             }
         });
@@ -67,7 +49,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::twoFactorChallengeView(function () {
             return view('auth.two-factor-challenge');
         });
-
+        
     }
 
 }

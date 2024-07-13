@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-auto mt-3 mt-md-0 d-grid">
-                            <a href="{{url('processed-withdraw-request')}}" class="btn btn-xl btn-warning text-nowrap ms-xl-2">
+                            <a href="{{url('processed-withdraw-request')}}" class="btn btn-xl btn-primary text-nowrap ms-xl-2">
                                 Processesed Requests</a>
                         </div>
                     </div>

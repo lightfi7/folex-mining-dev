@@ -54,13 +54,13 @@
                                                                 <a class="text-black"><b>User Details</b></a>
                                                             </div>
                                                             <div class="col-10 col-md-3 d-flex align-items-center mb-3 mb-md-0 h-md-100">
-                                                                <span class="badge badge-warning badge-sm me-1" style="font-size: inherit;"> <i class='fa fa-user mx-1'></i> {{$user->first_name." ".$user->last_name}}</span>
+                                                                <span class="badge badge-primary badge-sm me-1" style="font-size: inherit;"> <i class='fa fa-user mx-1'></i> {{$user->first_name." ".$user->last_name}}</span>
                                                             </div>
                                                             <div class="col-10 col-md-3 d-flex align-items-center mb-3 mb-md-0 h-md-100">
-                                                                <span class="badge badge-warning badge-sm me-1" style="font-size: inherit;"><i class='fa fa-envelope mx-1'></i> {{$user->email}}</span>
+                                                                <span class="badge badge-primary badge-sm me-1" style="font-size: inherit;"><i class='fa fa-envelope mx-1'></i> {{$user->email}}</span>
                                                             </div>
                                                             <div class="col-10 col-md-3 d-flex align-items-center mb-3 mb-md-0 h-md-100">
-                                                                <span class="badge badge-warning badge-sm me-1" style="font-size: inherit;"><i class="fa fa-phone mx-1"></i> {{$user->phone ? $user->phone : "Not Available"}}</span>
+                                                                <span class="badge badge-primary badge-sm me-1" style="font-size: inherit;"><i class="fa fa-phone mx-1"></i> {{$user->phone ? $user->phone : "Not Available"}}</span>
                                                             </div>
                                                         </div>
                                                     </div>

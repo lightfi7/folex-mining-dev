@@ -124,7 +124,7 @@ class CryptoWalletController extends Controller
     public function edit($public_id)
     {
         $user = Auth::user();
-        $form_button = "Update";
+        $form_button = __("Update");
         $directory = $this->directory;
         $title_singular = __($this->title_singular);
 
@@ -193,7 +193,7 @@ class CryptoWalletController extends Controller
         $html = "<div>
                     <p class='text-left'>
                         <b>Crypto Option: </b>".$record->crypto_options->name."<br>
-                        <b>Crypto Wallet Address: </b>".$record->wallet_address."<br>
+                        <b>".__("Crypto Wallet Address").": </b>".$record->wallet_address."<br>
                     </p>
                 </div>";
         return $html;

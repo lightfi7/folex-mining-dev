@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Providers;
-
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +25,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Route::group([ 'middleware' => 'cors'], function() {
-            Passport::routes();
-        });
     }
 }

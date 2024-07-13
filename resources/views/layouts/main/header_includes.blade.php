@@ -80,6 +80,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/cal/ion.rangeSlider.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-221611890-1"></script>
+
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}

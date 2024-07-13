@@ -22,7 +22,7 @@
 
     function make_table(){
 
-        url = "{{ url('hashing-settings') }}";
+        var url = "{{ url('hashing-settings') }}";
 
         var table = $('#datatables');
         oTable = table.DataTable({

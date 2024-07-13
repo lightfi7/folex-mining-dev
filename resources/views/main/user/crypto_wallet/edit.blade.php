@@ -34,7 +34,7 @@
                                 @method('PUT')
                                 @include($directory."partials.form")
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-warning submit-btn btn-lg">{{@$form_button}}</button>
+                                    <button type="submit" class="btn btn-primary submit-btn btn-lg">{{@$form_button}}</button>
                                 </div>
                             </form>
                         </div>

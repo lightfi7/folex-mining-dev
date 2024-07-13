@@ -456,6 +456,50 @@ function calculate_income($p, $coin_data){
         }
     }
 
+
+    $expression = new ExpressionLanguage();
+
+    try {
+        $production = $expression->evaluate($formula);
+    } catch (\Throwable $th) {
+        return [false, false];
+    }
+    //Total income without electricity
+    $income = $coin_data->price * $production;
+
+    //Our Consumption
+    $power_consumption_cost_in_Kwatt = $hashing->power_consumption/ 1000;
+    $cost_per_kwh = $hashing->cost_per_kwh;
+    $power_consumption_cost =  $cost_per_kwh * $power_consumption_cost_in_Kwatt * $p;
+    
+    
+    $result["daily"] = $income - $power_consumption_cost;
+    $result["monthly"] =  $result["daily"] * 30;
+    $result["yearly"] = $result["daily"] * 365;
+
+    return [true, $result];
+}
+
+function calculate_power($p, $coin_data){
+    
+    $unit_conversion = [
+        "TH/s" => "1000000000000",
+        "MH/s" => "1000000",
+        "KH/s" => "1000",
+    ];
+
+    $formula = $coin_data->formula;
+    $hashing = $coin_data->hashing;
+
+    foreach (coin_api_tags() as $key => $coin_api_tag) {
+        //$p = TOTAL HASH APPLIED FOR OR PURCHASED BY CUSTOMER
+        if($coin_api_tag == "total_hash"){
+            $formula = str_replace("<$coin_api_tag>", ($p * $unit_conversion[$coin_data->unit]) , $formula);
+        }else{
+            $formula = str_replace("<$coin_api_tag>", floor($coin_data->$coin_api_tag), $formula);
+        }
+    }
+
     $expression = new ExpressionLanguage();
 
     try {
@@ -469,16 +513,8 @@ function calculate_income($p, $coin_data){
     $cost_per_kwh = $hashing->cost_per_kwh;
     $power_consumption_cost =  $cost_per_kwh * $power_consumption_cost_in_Kwatt * $p;
     
-    //Total income without electricity
-    $income = ( $coin_data->price / (1 / $production) );
-    
-    $result["daily"] = $income - $power_consumption_cost;
-    $result["monthly"] =  $result["daily"] * 30;
-    $result["yearly"] = $result["daily"] * 365;
-
-    return [true, $result];
+    return $power_consumption_cost;
 }
-
 
 
 function get_formula_for_js($coin_data){
@@ -490,6 +526,32 @@ function get_formula_for_js($coin_data){
     return $formula;
 }
 
+function get_referral_counts_for_each_level($user_id) {
+    $ids = [$user_id];
+    $level_count = [];
+    for ($i = 1; $i <=5; $i++) {
+        $cnt = DB::table("users")->whereIn('referred_by', $ids)->count();
+        $level_count[] = $cnt;
+        $records = DB::table("users")->whereIn('referred_by', $ids)->get();
+        $ids = [];
+        foreach ($records as $record) {
+            $ids[] = $record->id;
+        }
+        // dd($ids);
+    }
+    // dd($level_count);
+    return $level_count;
+}
+
+function get_referral_parent($id, $step) {
+    $record = null;
+    for ($i = 0; $i < $step; $i++) {
+        $record = DB::table("users")->where('referred_by', '=', $id)->first();
+        $id = $record->id;
+    }
+    // dd($level_count);
+    return $record;
+}
 
 function get_user_balance($user_id=""){
     $record = DB::table("wallets")->where('user_id', ($user_id == "" ? Auth::user()->id : $user_id) )->first();
@@ -545,4 +607,20 @@ function coin_api_tags_js(){
         '$hashing_reward_block' => "reward_block",
         '$coin_price' => "price",
     ];
+}
+
+function get_anonymised_user_name($user_name) {
+    $user_name = trim($user_name);
+    if (strlen($user_name) < 1) {
+        return "***";
+    }
+
+    $parts = explode('@', $user_name);
+    $firstPart = substr($parts[0], 0, 1);
+    $lastPart = substr($parts[0], -2);
+    $middlePart = str_repeat('*', strlen($parts[0])-3);
+    if (strlen($middlePart) < 3) {
+        $middlePart = '***';
+    }
+    return $firstPart.$middlePart.$lastPart;
 }

@@ -53,7 +53,7 @@ class UserController extends Controller
                 return $records->first_name . " " . $records->last_name;
             })
             ->addColumn('wallets', function ($records) {
-                return $records->wallets ? ("$".to_cash_format_small($records->wallets->balance)) : "$0.00";
+                return $records->wallets ? ("$" . to_cash_format_small($records->wallets->balance)) : "$0.00";
             })
             ->addColumn('role_name', function ($records) {
                 return ucfirst($records->name);
@@ -63,12 +63,13 @@ class UserController extends Controller
             })
             ->addColumn('action', function ($records) {
 
-                $show_url = url("users") . "/" . $records->public_id;
+                $show_url = url("users") . "/" . $records->referral;
                 $button = "<a href='" . $show_url . "' class='dropdown-item'>Show Details</a>";
 
-                if(Auth::user()->role_id == 1){
-                    $ledger_url = url("user-ledger") . "/" . $records->public_id;
+                if (Auth::user()->role_id == 1) {
+                    $ledger_url = url("user-ledger") . "/" . $records->referral;
                     $button .= "<a href='" . $ledger_url . "' class='dropdown-item'>Show User Ledger</a>";
+                    $button .= "<button onclick='deactivate2fa(" . $records->id . ")' class='dropdown-item'>Deactivate 2fa</button>";
                 }
 
                 return '<div class="dropdown">
@@ -79,7 +80,7 @@ class UserController extends Controller
                     </svg>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" style="margin: 0px;">
-                                ' . $button. '
+                                ' . $button . '
                         </div>
                     </div>';
 
@@ -102,7 +103,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -126,12 +127,28 @@ class UserController extends Controller
         return 1;
     }
 
+    public function update(Request $request, $public_id)
+    {
+        $request->validate([
+            'referrals_cnt' => 'required|numeric'
+        ]);
+
+        $user = User::find($request->id);
+        $user->referrals_cnt = $request->referrals_cnt;
+        $user->kyc_enabled = $request->kyc_enabled;
+        $user->enable_2fa = $request->enable_2fa;
+        $user->save();
+
+        Session::flash('success', 'Updated successfully');
+        return 1;
+    }
 
     public function show($public_id)
     {
+        $form_button = "Update";
 
         $record = User::select("users.*")
-            ->where("users.public_id", $public_id)
+            ->where("users.referral", $public_id)
             ->where("role_id", 3)
             ->first();
 
@@ -142,13 +159,13 @@ class UserController extends Controller
         $directory = $this->directory;
         $is_show = 1;
         $active_item = "users";
-        return view($this->directory . "show", compact('record', 'title_singular', 'directory', 'is_show', 'active_item'));
+        return view($this->directory . "show", compact('form_button', 'record', 'title_singular', 'directory', 'is_show', 'active_item'));
     }
 
 
     public function user_ledger($user_id)
     {
-        $user = User::where("public_id", $user_id)->first();
+        $user = User::where("referral", $user_id)->first();
         $wallet = Wallet::where("user_id", $user->id)->first();
 
         $total_deposited = to_cash_format_small(Ledger::where("user_id", $user->id)->where("type", 2)->sum("amount"));
@@ -183,38 +200,35 @@ class UserController extends Controller
     public function user_ledger_listing($id)
     {
         $records = Ledger::where("user_id", $id)
-                            ->with('hashings', 'action_by', 'coinbase_payments', 'stripe_payments', 'ledger_users')
-                            ->get();
+            ->with('hashings', 'action_by', 'coinbase_payments', 'stripe_payments', 'ledger_users')
+            ->get();
 
         return DataTables::of($records)
             ->addColumn('hashing', function ($records) { //
                 return $records->hashings ? ($records->hashings->name) : '';
             })
             ->addColumn('wallet_amount', function ($records) { //
-                return "$ ".to_cash_format_small($records->current_wallet_balance);
+                return "$ " . to_cash_format_small($records->current_wallet_balance);
             })
             ->addColumn('amount', function ($records) { //
-                return "$ ".to_cash_format_small($records->amount);
+                return "$ " . to_cash_format_small($records->amount);
             })
             ->addColumn('type', function ($records) { //
                 return $this->type[$records->type];
             })
             ->addColumn('transaction_by', function ($records) {
-                if($records->payment_method == 4){
-                    return ($records->ledger_users ? ($records->ledger_users->users ? $records->ledger_users->users->email : "" ) : "");
-                }
-                else if(in_array($records->payment_method, [1,2,3])){
-                    return $records->type == 1 ? $this->method[$records->payment_method] : ($this->method[$records->payment_method] . " (". $records->status_text.")");
-                }
-                else {
+                if ($records->payment_method == 4) {
+                    return ($records->ledger_users ? ($records->ledger_users->users ? $records->ledger_users->users->email : "") : "");
+                } else if (in_array($records->payment_method, [1, 2, 3])) {
+                    return $records->type == 1 ? $this->method[$records->payment_method] : ($this->method[$records->payment_method] . " (" . $records->status_text . ")");
+                } else {
                     return $records->type == 4 ? "Auto" : $this->method[$records->payment_method];
                 }
             })
             ->addColumn('transaction_code', function ($records) {
-                if($records->coinbase_payments){
+                if ($records->coinbase_payments) {
                     return $records->coinbase_payments->coinbase_code;
-                }
-                else if($records->stripe_payments){
+                } else if ($records->stripe_payments) {
                     return $records->stripe_payments->card_data;
                 }
             })
@@ -295,5 +309,15 @@ class UserController extends Controller
 
     //     return redirect()->back()->with("success", "Deleted Successfully");
     // }
+
+    public function deactivate2fa(Request $request)
+    {
+        $body = $request->all();
+        $id = $body['id'];
+        $user = User::where('id', $id)->first();
+        $user->enable_2fa = false;
+        $user->save();
+        return response()->json(['message' => 'Success']);
+    }
 
 }

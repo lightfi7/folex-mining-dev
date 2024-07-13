@@ -9,6 +9,8 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Str;
 use App\Mail\SendCodeMail;
 use Mail;
+use PHLAK\StrGen;
+use PragmaRX\Google2FA\Google2FA;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,6 +23,7 @@ class CreateNewUser implements CreatesNewUsers
 
     public function create(array $input)
     {
+        // dd($input);
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -29,47 +32,42 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        $referral_id = NULL;
-        if(isset($input["referral"])){
-            $user = User::where("public_id", $input["referral"])->first();
-            if($user){
-                $referral_id = $user->id;
-            }
+        // get referral
+        $referred_by = null;
+        if(isset($input['ref'])) {
+            $referred_by = User::where('referral', $input['ref'])->first()->id;
+            // print_r($input['ref']);
+            print_r($referred_by);
+            // exit;
+
+            // update user referrals_cnt
+            $user = User::find($referred_by);
+            $user->referrals_cnt = $user->referrals_cnt + 1;
+            $user->save();            
         }
 
+        // generate own referral
+        $generator = new StrGen\Generator();
+        $referral = $generator->alphaNumeric(11);
+        
+        // genrate 2fa secret
+        $google2fa = new Google2FA();
+        $secretKey = $google2fa->generateSecretKey(64);
+
+        // public id
+        $part = explode( '@', $input['email'] );
+
         $result = User::create([
-            "public_id" => (string) Str::uuid(),
             'role_id' => 3,
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             'email' => $input['email'],
-            'referred_by' => $referral_id,
+            'referred_by' => $referred_by,
             'password' => Hash::make($input['password']),
+            'two_factor_secret' => $secretKey,
+            'referral' => $referral,
+            'public_id' => $part[ 0 ],
         ]);
-
-        $user = User::where('email',  $input['email'])->first();
-        if ($user) {
-            $user->two_factor_secret = encrypt(random_int(10000000, 99999999));
-            $user->save();
-
-            // if($user->role_id == 3){
-            try {
-                $email_data = [
-                    'code' => decrypt($user->two_factor_secret),
-                    'to_name' => $user->first_name
-                ];
-
-                info("Code: ". $email_data["code"]);
-                print_r("Code: ". $email_data["code"]);
-                // Mail::to($user->email)->send(new SendCodeMail($email_data));
-
-            } catch (Exception $e) {
-                info("Error: ". $e->getMessage());
-            }
-            // }
-
-            return $user;
-        }
 
         return $result;
     }

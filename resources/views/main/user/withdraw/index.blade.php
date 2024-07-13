@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-sm-12 col-md-6">
                         <div class="card mb-4 rounded-12 shadow border border-gray-50">
                             <div class="card-body p-3 p-xl-3 p-xxl-4">
                                 <div class="row align-items-center">
@@ -40,13 +40,13 @@
                     </div>
 
 
-                    <div class="col-6">
+                    <div class="col-sm-12 col-md-6">
                         <div class="card mb-4 rounded-12 shadow border border-gray-50">
                             <div class="card-body p-3 p-xl-3 p-xxl-4">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <span class="small text-gray-600 d-block mb-1">{{__("Withdraw Requested")}}</span>
-                                        <span class="h5 mb-0">$ {{to_cash_format(get_user_withdraw())}}</span>
+                                        <span class="h5 mb-0">$ {{to_cash_format_small(get_user_withdraw())}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="position-relative">
@@ -63,11 +63,11 @@
                             <div class="card-body h-100">
                                 <div class="row">
                                     <div class="col-md-12 text-center mb-3 text-alternate text-smaller lh-1-25">
-                                        <div>${{$user_balance}} {{__("TO COINS")}}</div>
+                                        <div>${{to_cash_format_small($user_balance)}} {{__("TO COINS")}}</div>
                                     </div>
                                     @foreach ($coin_data as $key => $coin_item)
                                         <div class="col-md-4 text-center mb-2">
-                                            <span class="badge badge-warning badge-sm" style="font-size: inherit;"> {{to_btc_format(convert_to_coin_earning($coin_item->price ,$user_balance))}} {{$coin_item->coin_display_name}}</span>
+                                            <span class="badge badge-primary badge-sm" style="font-size: inherit;"> {{to_btc_format(convert_to_coin_earning($coin_item->price ,$user_balance))}} {{$coin_item->coin_display_name}}</span>
                                         </div>
                                     @endforeach
                                 </div>
@@ -104,7 +104,7 @@
 
                                             <div class="row form-group mb-3 px-3 px-md-4">
                                                 <div class="col-md-12 mb-3">
-                                                    <a class="btn btn-warning btn-lg" href="{{url('bank-account')}}">{{__("Manage Bank Accounts")}}</a>
+                                                    <a class="btn btn-primary btn-lg" href="{{url('bank-account')}}">{{__("Manage Bank Accounts")}}</a>
                                                 </div>
                                             </div>
 
@@ -145,7 +145,7 @@
 
                                             <div class="row form-group mb-3 px-md-4">
                                                 <div class="col-md-12 mb-3">
-                                                    <a class="btn btn-warning btn-lg" href="{{url('crypto-wallet')}}">{{__("Manage Crypto Wallets")}}</a>
+                                                    <a class="btn btn-primary btn-lg" href="{{url('crypto-wallet')}}">{{__("Manage Crypto Wallets")}}</a>
                                                 </div>
                                             </div>
 
@@ -177,7 +177,8 @@
                             </div>
                             <div class='text-center'>
                                 <input type="hidden" name="payment_method" id="payment_method" value="1" />
-                                <button type="submit" class="btn btn-warning submit-btn btn-lg">{{@$form_button}}</button>
+                                <button type="submit" class="btn btn-primary submit-btn btn-lg {{$user_data->kyc_enabled == 0? 'disabled-btn':''}}" >{{@$form_button}}</button>
+                                <div class="verify-kyc-first">{{$user_data->kyc_enabled == 0? 'To withdraw, please verify your KYC first.':''}}</div>
                             </div>
                         </form>
                     </div>

@@ -27,11 +27,21 @@
                     <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
                         <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold"> {{$title_singular}} Details</h5>
                     </div>
-                    <div class="card-body px-0 p-md-4">
+                    <!-- <div class="card-body px-0 p-md-4">
                         <div class="bd-example px-3">
                             @include($directory."partials.form")
                         </div>
-                    </div>
+                    </div> -->
+                    <form action="{{ url('/users'."/".@$record->public_id) }}" method="POST" class="ajax-form" class="form-horizontal">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="card-body">
+                            @include("shared.alerts")
+                            @include($directory . "partials.form")
+                            <button type="submit" class="btn btn-info submit-btn">{{@$form_button}}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

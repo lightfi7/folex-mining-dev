@@ -14,11 +14,11 @@
 
                                     <div class="miner-select">
                                         @foreach ($coin_data as $key => $coin)
-                                            @include("calculator_coin_section", compact("coin"))
+                                        @include("calculator_coin_section", compact("coin"))
                                         @endforeach
                                     </div>
                                 </div>
-                                
+
                                 <div class="miner-setup-slider">
                                     <span style="display: none;" class="irs irs--round js-irs-0">
                                         <span class="irs">
@@ -38,27 +38,31 @@
                                             <i></i>
                                         </span>
                                     </span>
-                                    <input type="text" class="miner-setup irs-hidden-input" value="" tabindex="-1" readonly="" style="display: none;">
+                                    <input type="text" class="miner-setup irs-hidden-input" value="" tabindex="-1"
+                                        readonly="" style="display: none;">
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="row p-3">
-                            <div class="col-md-6">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
                                 <div class="card mb-4 rounded-12 shadow border border-gray-50 p-4">
-
                                     <div class="calculate-earnings__calculator-data">
                                         <div class="calculate-earnings__calculator-data-item">
                                             <h4 class="calculate-earnings__calculator-data-title"><b>{{__("Investment in")}} $</b></h4>
-                                            <input type="text" value="" style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;" class="calculate-earnings__calculator-data-input" id="data-input-price">
+                                            <input type="number" placeholder="0.00" step="0.01" value=""
+                                                style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;"
+                                                class="calculate-earnings__calculator-data-input" id="data-input-price">
                                         </div>
 
                                         <div class="calculate-earnings__calculator-data-item">
                                             <h4 class="calculate-earnings__calculator-data-title">
                                                 <b>{{__("Power")}} <span class="input-prefix"> TH/s</span></b>
                                             </h4>
-                                            <input type="text" value="25" style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;" class="calculate-earnings__calculator-data-input" id="data-input-ghs">
+                                            <input type="text" value="25"
+                                                style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;"
+                                                class="calculate-earnings__calculator-data-input" id="data-input-ghs">
                                         </div>
                                     </div>
 
@@ -69,7 +73,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per day")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="daily"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers"
+                                                        id="daily"></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-1 buy_cal">
@@ -77,7 +82,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per month")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="month"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers"
+                                                        id="month"></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-1 buy_cal">
@@ -85,7 +91,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per year")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="year"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers" id="year">
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,14 +101,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
                                 <div class="card mb-4 rounded-12 shadow border border-gray-50 p-4">
-                                    <div class="calculate-earnings__calculator-data" style="display: inline-block !important;">
+                                    <div class="calculate-earnings__calculator-data"
+                                        style="display: inline-block !important;">
                                         <div class="">
                                             <h4 class="calculate-earnings__calculator-data-title">
-                                                <b>{{__("Your Own Electricity Cost (Per Watt)")}}</b>
+                                                <b>{{__("Your Own Electricity Cost (Per KWH)")}}</b>
                                             </h4>
-                                            <input type="text" value="0.2" style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;" class="calculate-earnings__calculator-data-input" id="data-input-ghs-home">
+                                            <input type="text" value="0.2"
+                                                style="box-shadow: 0 6px 20px rgb(0 0 0 / 5%); border: 1px solid #f2f2f2; border-radius: 5px;"
+                                                class="calculate-earnings__calculator-data-input"
+                                                id="data-input-ghs-home">
                                         </div>
                                     </div>
 
@@ -112,7 +123,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per day")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="daily_home"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers"
+                                                        id="daily_home"></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-1 buy_cal">
@@ -120,7 +132,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per month")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="month_home"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers"
+                                                        id="month_home"></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-1 buy_cal">
@@ -128,7 +141,8 @@
                                                     <h4 class="calculate-earnings__calculator-results-title">
                                                         {{__("Income")}} <strong>{{__("per year")}}</strong>
                                                     </h4>
-                                                    <p class="calculate-earnings__calculator-results-numbers" id="year_home"></p>
+                                                    <p class="calculate-earnings__calculator-results-numbers"
+                                                        id="year_home"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,7 +163,7 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-warning btn-lg submit-btn">{{@$form_button}}</button>
+                <button type="submit" class="btn btn-primary btn-lg submit-btn">{{@$form_button}}</button>
             </div>
         </div>
     </div>

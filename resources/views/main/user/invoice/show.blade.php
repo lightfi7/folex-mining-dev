@@ -18,8 +18,8 @@
             <div class="col-xxl-12 mb-4">
 
                 <div class="col-12 mb-5 py-3 py-lg-3">
-                    <a class="btn btn-lg btn-warning cursor-pointer" onclick="print();">{{__("Print")}}</a>
-                    <a class="btn btn-lg btn-warning" href="{{url('invoice-pdf'.'/'.@$record->public_id)."?type=".$type}}">{{__("Download")}}</a>
+                    <a class="btn btn-lg btn-primary cursor-pointer" onclick="print();">{{__("Print")}}</a>
+                    <a class="btn btn-lg btn-primary" href="{{url('invoice-pdf'.'/'.@$record->public_id)."?type=".$type}}">{{__("Download")}}</a>
                 </div>
 
                 <div class="col-xxl-12 mb-4">

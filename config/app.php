@@ -177,12 +177,13 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
+        // Laravel\Passport\PassportServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Collective\Remote\RemoteServiceProvider::class,
+        PragmaRX\Google2FALaravel\ServiceProvider::class,
     ],
 
     /*
@@ -239,6 +240,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'SSH' => Collective\Remote\RemoteFacade::class,
+        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
     ],
 
 ];

@@ -1,3 +1,6 @@
+@php
+    $home_url = url("/");  
+@endphp
 <div class="header border-bottom border-gray-200 header-fixed">
     <div class="container-fluid px-0">
         <div class="header-body px-3 px-xxl-5 py-3 py-lg-4">
@@ -6,7 +9,7 @@
                     <img src="{{asset('temp/assets/svg/icons/hamburger1.svg')}}" alt="img">
                     <img src="{{asset('temp/assets/svg/icons/close1.svg')}}" style="width:20px;" class="menu-close" alt="img">
                 </a>
-                <a class="navbar-brand mx-auto d-lg-none col-auto px-0" href="#">
+                <a class="navbar-brand mx-auto d-lg-none col-auto px-0" href="{{$home_url}}">
                     <img src="{{$site_data["site_logo"]}}" height="40" alt="{{$site_data["site_name"]}}">
                 </a>
                 <div class="col d-flex align-items-center">
@@ -22,7 +25,7 @@
 
                     <div class="dropdown grid-option {{auth()->user()->role_id != 3 ? 'd-none' : ''}}">
                         <a href="#" class="text-dark ms-4 ms-xxl-5 h5 mb-0" data-bs-toggle="dropdown" aria-expanded="false" id="grid">
-                            <img src='{{@languages()[auth()->user()->locale][1]}}' height=33 >
+                            <img src='{{@languages()[auth()->user()->locale][1]}}' style="width:25px;height:25px;">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end py-0" style='min-width: auto;' aria-labelledby="grid" style="">
                             <div class="dropdown-header d-flex align-items-center px-4 py-2">
@@ -33,7 +36,7 @@
                                     <a href="{{url("lang/$locale")}}" class="dropdown-item text-wrap">
                                         <div class="media align-items-center">
                                             <span class="me-3">
-                                                <img class="avatar avatar-xs rounded-0" src="{{$lang[1]}}" alt="{{$lang[0]}}">
+                                                <img class="avatar avatar-xs rounded-0" src="{{$lang[1]}}" alt="{{$lang[0]}}" style="width:25px;height:25px;">
                                             </span>
                                             <div class="media-body" style='text-align: left;'>
                                                 <span class="fs-16 font-weight-semibold dropdown-title">{{$lang[0]}}</span>
