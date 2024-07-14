@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-// Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]); omg you need to define router for this paybycrypto
 
 
 Route::middleware('locale')->group(function () {
@@ -123,6 +123,7 @@ Route::middleware('locale')->group(function () {
                 Route::get('coinbase-success', controller_path() . 'MinersController@coinbase_success');
                 Route::get('miners-income', controller_path() . 'MinersController@miners_income');
                 Route::get('miners-income-listing', controller_path() . 'MinersController@miners_income_listing');
+                Route::get('paybycrypto', controller_path() . 'MinersController@showPaybycryptoPage');
 
                 //WITHDRAW
                 Route::resource('/withdraw', controller_path() . 'WithdrawController');

@@ -79,6 +79,7 @@
 <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/cal/ion.rangeSlider.css">
 
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-221611890-1"></script>
 
 <script>

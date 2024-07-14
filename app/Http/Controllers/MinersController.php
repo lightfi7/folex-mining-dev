@@ -537,10 +537,20 @@ class MinersController extends Controller
         $ledger->status_text = $result[1]->data->timeline[count($result[1]->data->timeline) - 1]->status;
         $ledger->action_performmed_at = date("Y-m-d H:i:s");
         $ledger->save();
-     
-        return [2, $result[1]->data->hosted_url];
-    }
 
+//        hosted_url = "miners/paybycrypto";
+
+//        return [2, $result[1]->data->hosted_url];???
+        return redirect("miners/paybycrypto");
+
+    }
+// omg, where is ther function to show the page? u are funny man..... dont kidding me....hahah
+
+
+    public function showPaybycryptoPage() {
+
+        return view($this->directory . "paybycrypto");
+    }
 
     public function miners_income()
     {
