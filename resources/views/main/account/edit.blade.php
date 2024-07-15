@@ -38,11 +38,11 @@ Account
                                     data-bs-target="#pills-withdrawl" type="button" role="tab"
                                     aria-controls="pills-withdrawl" aria-selected="false">{{ __('2FA') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" id="pills-kyc-tab" data-bs-toggle="pill" data-bs-target="#pills-kyc"
                                     type="button" role="tab" aria-controls="pills-withdrawl" aria-selected="false">{{
                                     __('KYC') }}</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
 
@@ -118,7 +118,7 @@ Account
                                     </div>
                                     <div class="d-grid">
                                         <button id="enable-2fa" type="submit" class="btn btn-primary text-white">{{
-                                            __('enable') }}</button>
+                                            __('Enable') }}</button>
                                     </div>
                                 </form>
                             </div>

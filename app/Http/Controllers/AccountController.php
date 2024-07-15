@@ -31,7 +31,6 @@ class AccountController extends Controller {
             $record->two_factor_secret = $secretKey;
             $record->save();
         }
-
         $qrCodeUrl = $google2fa->getQRCodeUrl(
             'cloudminepool.com',
             $record->email,
@@ -40,7 +39,9 @@ class AccountController extends Controller {
         $email = $record->email;
 
         // check KYC
-        $kyc_enabled = User::where("id", auth()->user()->id)->first()->kyc_enabled;
+        $kyc_enabled = 1;
+        
+
         $answer = $kyc_enabled;
         if ($kyc_enabled == 0) {
 
