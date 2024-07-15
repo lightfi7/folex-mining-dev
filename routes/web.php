@@ -124,7 +124,8 @@ Route::middleware('locale')->group(function () {
                 Route::get('miners-income', controller_path() . 'MinersController@miners_income');
                 Route::get('miners-income-listing', controller_path() . 'MinersController@miners_income_listing');
                 Route::get('paybycrypto', controller_path() . 'MinersController@showPaybycryptoPage');
-
+                Route::post('check-payment', controller_path() . 'MinersController@check_payment');
+                Route::post('cancel_payment', controller_path() . 'MinersController@cancel_payment');
                 //WITHDRAW
                 Route::resource('/withdraw', controller_path() . 'WithdrawController');
                 Route::post('/process-withdraw', controller_path() . 'WithdrawController@process_withdraw');

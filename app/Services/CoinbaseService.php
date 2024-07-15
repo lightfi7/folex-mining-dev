@@ -23,7 +23,7 @@ class CoinbaseService {
                         "currency"=> "USD"
                 ],
                 "metadata" => [
-                        "customer_id"=> Auth::user()->public_id,
+                        "customer_id"=> Auth::user()->id,
                         "customer_name" => Auth::user()->email
                         ],
                 "redirect_url"=> $redirect_url,

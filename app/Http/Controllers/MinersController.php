@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Auth, DB, Hash, File, Image, Session, Str;
 use Yajra\DataTables\DataTables;
 use App\Services\LevelingService;
+use Illuminate\Support\Facades\Http;
 
 
 class MinersController extends Controller
@@ -506,11 +507,10 @@ class MinersController extends Controller
         $redirect_url = url("coinbase-success");
         $cancel_url = url('pay/miners')."?hashing=".$hashing."&cash=".$cash;
         $result = $this->coinbase_call->make_charge($cash, $redirect_url, $cancel_url);
-
         if($result[0] == false)
             return [array("error" => $result[1])];
         
-            //Adding Entries
+        //Adding Entries
         $coinbase_payment = new CoinbasePayment();
         $coinbase_payment->public_id = (string) Str::uuid();
         $coinbase_payment->user_id = Auth::user()->id;
@@ -538,18 +538,57 @@ class MinersController extends Controller
         $ledger->action_performmed_at = date("Y-m-d H:i:s");
         $ledger->save();
 
-//        hosted_url = "miners/paybycrypto";
+        $hosted_url = "/paybycrypto?pid=".$coinbase_payment->public_id;
 
-//        return [2, $result[1]->data->hosted_url];???
-        return redirect("miners/paybycrypto");
-
+        return [2, $hosted_url];
     }
-// omg, where is ther function to show the page? u are funny man..... dont kidding me....hahah
 
+    public function showPaybycryptoPage(Request $req) {
+        $wa = Auth::user()->wa;
+        $pid = $req->input('pid');
+        $cp = CoinbasePayment::where("public_id", $pid)->first();
+        if(is_null($cp))
+            return redirect('/pay/miners');
+        $amount = $cp->amount_deposit;
+        $tl = json_decode($cp->timeline);
+        $timeout = $tl[0]->time;
+        return view($this->directory."paybycrypto", compact('pid', 'wa', 'amount', 'timeout'));
+    }
 
-    public function showPaybycryptoPage() {
+    public function check_payment(Request $req){
+        $pid = $req->input('pid');
+        $cp = CoinbasePayment::where("public_id", $pid)->first();
+        if(is_null($cp)){
+            return [0, false, null];
+        }
+        $tl = json_decode($cp->timeline);
+        $timeout = $tl[0]->time;
+        $deposit_request_exist = DepositRequest::where("coinbase_payment_id", $cp->id)->first();
+        $status = !is_null($deposit_request_exist);
+        return [1, $status, $timeout];
+    }
 
-        return view($this->directory . "paybycrypto");
+    public function cancel_payment(Request $req){
+        $pid = $req->input('pid');
+        $cp = CoinbasePayment::where("public_id", $pid)->first();
+        if(is_null($cp)){
+            return false;
+        }
+        $code = $cp->coinbase_code;
+        $cp->delete();
+
+        $response = Http::post('http://localhost:5000/cancel-charge', ['taskId'=>$code]);
+
+        // Check if the request was successful
+        if ($response->successful()) {
+            $data = $response->json();
+            // Do something with the data
+            return true;
+        } else {
+            // Handle the error
+        }
+
+        return false;
     }
 
     public function miners_income()
