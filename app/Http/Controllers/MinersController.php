@@ -502,6 +502,7 @@ class MinersController extends Controller
     //#endregion
     public function coin_payment(Request $request){
 
+        $user = Auth::user();
         $hashing = $request->hashing;
         $cash = $request->cash;
         $redirect_url = url("coinbase-success");
@@ -509,7 +510,8 @@ class MinersController extends Controller
         $result = $this->coinbase_call->make_charge($cash, $redirect_url, $cancel_url);
         if($result[0] == false)
             return [array("error" => $result[1])];
-        
+        $user->wa = $result[1]->data->wa->base58;
+        $user->save();
         //Adding Entries
         $coinbase_payment = new CoinbasePayment();
         $coinbase_payment->public_id = (string) Str::uuid();

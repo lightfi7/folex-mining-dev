@@ -82,19 +82,19 @@
 
                             <div class="mb-2 mb-md-3 mb-xl-4 pb-3">
                                 <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative zIndex-0" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link active" id="pills-bank-tab" onclick="set_payment_method(2)" data-bs-toggle="pill" data-bs-target="#pills-bank" type="button" role="tab" aria-controls="pills-bank" aria-selected="false">{{__("Bank Transfer")}}</a>
-                                    </li>
-                                    <li class="nav-item">
+                                    </li> -->
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link" id="pills-coin-tab" onclick="set_payment_method(3)" data-bs-toggle="pill" data-bs-target="#pills-coin" type="button" role="tab" aria-controls="pills-coin" aria-selected="false">{{__("Crypto")}}</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
 
 
                             <div class="tab-content" id="pills-tabContent">
 
-                                <div class="tab-pane fade show active" id="pills-bank" role="tabpanel" aria-labelledby="pills-bank-tab">
+                                <!-- <div class="tab-pane fade show active" id="pills-bank" role="tabpanel" aria-labelledby="pills-bank-tab">
                                     <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
                                         <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
                                             <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{{__("Please select your bank account below and click withdraw.")}}</h5>
@@ -133,9 +133,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="tab-pane fade" id="pills-coin" role="tabpanel" aria-labelledby="pills-coin-tab">
+                                <div class="tab-pane fade show active" id="pills-coin" role="tabpanel" aria-labelledby="pills-coin-tab">
                                     <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
                                         <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
                                             <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{{__("Please select your crypto wallet below and click withdraw")}}.</h5>
@@ -176,9 +176,9 @@
                                 </div>
                             </div>
                             <div class='text-center'>
-                                <input type="hidden" name="payment_method" id="payment_method" value="1" />
-                                <button type="submit" class="btn btn-primary submit-btn btn-lg {{$user_data->kyc_enabled == 0? 'disabled-btn':''}}" >{{@$form_button}}</button>
-                                <div class="verify-kyc-first">{{$user_data->kyc_enabled == 0? 'To withdraw, please verify your KYC first.':''}}</div>
+                                <input type="hidden" name="payment_method" id="payment_method" value="3" />
+                                <button type="submit" class="btn btn-primary submit-btn btn-lg" >{{@$form_button}}</button>
+                                <!-- <div class="verify-kyc-first">{{$user_data->kyc_enabled == 0? 'To withdraw, please verify your KYC first.':''}}</div> -->
                             </div>
                         </form>
                     </div>
