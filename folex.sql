@@ -16,12 +16,10 @@
 
 
 -- Dumping database structure for folex
-DROP DATABASE IF EXISTS `folex`;
 CREATE DATABASE IF NOT EXISTS `folex` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `folex`;
 
 -- Dumping structure for table folex.coinbase_payments
-DROP TABLE IF EXISTS `coinbase_payments`;
 CREATE TABLE IF NOT EXISTS `coinbase_payments` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -37,16 +35,25 @@ CREATE TABLE IF NOT EXISTS `coinbase_payments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table folex.coinbase_payments: ~0 rows (approximately)
+-- Dumping data for table folex.coinbase_payments: ~9 rows (approximately)
 DELETE FROM `coinbase_payments`;
 INSERT INTO `coinbase_payments` (`id`, `public_id`, `user_id`, `coinbase_id`, `coinbase_code`, `amount_deposit`, `hashing_id`, `coin_data_id`, `energy_bought`, `is_resolved`, `timeline`, `created_at`, `updated_at`) VALUES
 	(1, 'c9e00e70-4b3d-4f9b-ad00-e6d280cdaadc', 9, '1b94c9a9-9c78-4ffa-99a2-13a1561b3029', 'FYZPQHNR', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-13T11:21:04Z"}]', '2024-07-13 03:21:21', '2024-07-13 03:21:21'),
-	(2, 'e90512e1-a87d-45f9-80b7-0fbda3953359', 9, '66928bf3d2a4cde2caadf1ce', '66928bf3d2a4cde2caadf1ce', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-13T14:45:15.733Z"}]', '2024-07-13 06:15:15', '2024-07-13 06:15:15');
+	(2, 'e90512e1-a87d-45f9-80b7-0fbda3953359', 9, '66928bf3d2a4cde2caadf1ce', '66928bf3d2a4cde2caadf1ce', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-13T14:45:15.733Z"}]', '2024-07-13 06:15:15', '2024-07-13 06:15:15'),
+	(3, '6b219c21-4259-4fe5-b848-9ed7ba97f8da', 9, '66952ceacc923fe2be4e6807', '66952ceacc923fe2be4e6807', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T14:36:34.772Z"}]', '2024-07-15 06:06:35', '2024-07-15 06:06:35'),
+	(4, 'bb524f82-e69b-48ec-8735-192ccf60f6da', 9, '66952d2ccc923fe2be4e6809', '66952d2ccc923fe2be4e6809', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T14:37:40.317Z"}]', '2024-07-15 06:07:40', '2024-07-15 06:07:40'),
+	(5, 'adae30c4-6440-48e7-8095-430b22b03984', 9, '6695425285e128edc4a1048c', '6695425285e128edc4a1048c', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T16:07:54.250Z"}]', '2024-07-15 07:37:54', '2024-07-15 07:37:54'),
+	(6, 'ef2ad07d-e833-4f5c-b79e-9dff0e2c5ef1', 9, '669545f785e128edc4a1048e', '669545f785e128edc4a1048e', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T16:23:27.270Z"}]', '2024-07-15 07:53:27', '2024-07-15 07:53:27'),
+	(7, 'f4660971-1d72-4170-b884-4c9a79cdbe28', 9, '6695468585e128edc4a10490', '6695468585e128edc4a10490', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T16:25:49.949Z"}]', '2024-07-15 07:55:49', '2024-07-15 07:55:49'),
+	(8, '0ef288ed-cd55-420b-9d63-67bb8f07aed7', 9, '669562f185e128edc4a10492', '669562f185e128edc4a10492', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T18:27:05.587Z"}]', '2024-07-15 09:57:06', '2024-07-15 09:57:06'),
+	(9, 'c2400f2f-cacb-4076-8725-c7022b713e76', 9, '66956ba585e128edc4a10494', '66956ba585e128edc4a10494', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T19:04:13.473Z"}]', '2024-07-15 10:34:13', '2024-07-15 10:34:13'),
+	(21, 'a97ccbf7-0e17-408d-b122-3bab9a9ae42b', 9, '669573fe9c08dabc1d11907f', '669573fe9c08dabc1d11907f', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T19:39:50.662Z"}]', '2024-07-15 11:09:50', '2024-07-15 11:09:50'),
+	(23, '7c74b4ae-7004-4f37-9850-0ac44e0bb0cc', 9, '669577fb9c08dabc1d119086', '669577fb9c08dabc1d119086', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T19:56:51.203Z"}]', '2024-07-15 11:26:51', '2024-07-15 11:26:51'),
+	(25, '521f265c-558c-44f6-a6fb-cbffd1d9e639', 9, '66957e25a49a3cd9a23933d7', '66957e25a49a3cd9a23933d7', '150.00', '1', 1, '0.090192307692308', 0, '[{"status":"NEW","time":"2024-07-15T20:23:09.506Z"}]', '2024-07-15 11:53:09', '2024-07-15 11:53:09');
 
 -- Dumping structure for table folex.coinbase_webhooks
-DROP TABLE IF EXISTS `coinbase_webhooks`;
 CREATE TABLE IF NOT EXISTS `coinbase_webhooks` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -59,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `coinbase_webhooks` (
 DELETE FROM `coinbase_webhooks`;
 
 -- Dumping structure for table folex.coin_data
-DROP TABLE IF EXISTS `coin_data`;
 CREATE TABLE IF NOT EXISTS `coin_data` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `hashing_id` int DEFAULT NULL,
@@ -88,7 +94,6 @@ INSERT INTO `coin_data` (`id`, `hashing_id`, `is_active`, `formula`, `unit`, `co
 	(6, 5, 1, '( <reward_block> * (<total_hash>) * 86400 ) / (<difficulty> *  4294967296)', 'MH/s', '2MINERS ZEC', '{"id":"0bfeb7251ef0b2e58abca9755796f2a9258a3721","coin":"2MINERS ZEC","name":"2Miners","type":"pool","algorithm":"Equihash","network_hashrate":-1,"difficulty":-1,"reward":9.8244639085816e-9,"reward_unit":"ZEC","reward_block":-1,"price":22.6344443724,"volume":-1,"updated":1708100401}', 'ZEC', '-1', '-1', '9.8244639085816E-9', '-1', '22.6344443724', '2024-02-02 10:22:44', '2024-02-16 11:20:02');
 
 -- Dumping structure for table folex.crypto_options
-DROP TABLE IF EXISTS `crypto_options`;
 CREATE TABLE IF NOT EXISTS `crypto_options` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -110,7 +115,6 @@ INSERT INTO `crypto_options` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(8, 'Bitcoin Cash', NULL, NULL);
 
 -- Dumping structure for table folex.deposit_requests
-DROP TABLE IF EXISTS `deposit_requests`;
 CREATE TABLE IF NOT EXISTS `deposit_requests` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,7 +140,6 @@ CREATE TABLE IF NOT EXISTS `deposit_requests` (
 DELETE FROM `deposit_requests`;
 
 -- Dumping structure for table folex.email_histories
-DROP TABLE IF EXISTS `email_histories`;
 CREATE TABLE IF NOT EXISTS `email_histories` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -155,7 +158,6 @@ CREATE TABLE IF NOT EXISTS `email_histories` (
 DELETE FROM `email_histories`;
 
 -- Dumping structure for table folex.failed_jobs
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -172,7 +174,6 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 DELETE FROM `failed_jobs`;
 
 -- Dumping structure for table folex.hashings
-DROP TABLE IF EXISTS `hashings`;
 CREATE TABLE IF NOT EXISTS `hashings` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -197,7 +198,6 @@ INSERT INTO `hashings` (`id`, `name`, `is_active`, `price_khs`, `cost_per_kwh`, 
 	(5, 'Equihash', 1, 0.283, 0.67, 0.345, 15, 25000, 500000, '2024-02-02 10:21:00', '2024-02-02 10:21:00');
 
 -- Dumping structure for table folex.jobs
-DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -214,7 +214,6 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 DELETE FROM `jobs`;
 
 -- Dumping structure for table folex.ledgers
-DROP TABLE IF EXISTS `ledgers`;
 CREATE TABLE IF NOT EXISTS `ledgers` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -237,16 +236,38 @@ CREATE TABLE IF NOT EXISTS `ledgers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table folex.ledgers: ~1 rows (approximately)
+-- Dumping data for table folex.ledgers: ~7 rows (approximately)
 DELETE FROM `ledgers`;
 INSERT INTO `ledgers` (`id`, `public_id`, `user_id`, `payment_id`, `current_wallet_balance`, `amount`, `hashing_id`, `coin_data_id`, `coin_value`, `type`, `payment_method`, `coinbase_payment_id`, `stripe_payment_id`, `reference_ledger_id`, `withdraw_request_id`, `status_text`, `action_performmed_by`, `action_performmed_at`, `created_at`, `updated_at`) VALUES
 	(1, 'e863669a-439d-49e6-9aba-e07b4cb27ca5', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 1, NULL, NULL, NULL, 'NEW', NULL, '2024-07-13 06:21:21', '2024-07-13 03:21:21', '2024-07-13 03:21:21'),
-	(2, 'fc113bbe-fe70-483d-9b78-e3719eab8008', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 2, NULL, NULL, NULL, 'NEW', NULL, '2024-07-13 09:15:15', '2024-07-13 06:15:15', '2024-07-13 06:15:15');
+	(2, 'fc113bbe-fe70-483d-9b78-e3719eab8008', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 2, NULL, NULL, NULL, 'NEW', NULL, '2024-07-13 09:15:15', '2024-07-13 06:15:15', '2024-07-13 06:15:15'),
+	(3, 'd245b975-1778-4d18-aea0-9667c54f7ab8', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 3, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 09:06:35', '2024-07-15 06:06:35', '2024-07-15 06:06:35'),
+	(4, '7eb8c92e-5a49-4ddd-859f-71cb2afe86d8', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 4, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 09:07:40', '2024-07-15 06:07:40', '2024-07-15 06:07:40'),
+	(5, '9aa26701-9ecc-4bd3-9754-a3ae2901eda3', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 5, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 10:37:54', '2024-07-15 07:37:54', '2024-07-15 07:37:54'),
+	(6, '0803a7d3-d052-4c75-a789-431f83726da9', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 6, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 10:53:27', '2024-07-15 07:53:27', '2024-07-15 07:53:27'),
+	(7, 'de674f19-c543-4b28-bffd-cbfeab69ff7e', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 7, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 10:55:49', '2024-07-15 07:55:49', '2024-07-15 07:55:49'),
+	(8, '0ab5101e-5897-4650-ab4e-9dd5093d8a5f', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 8, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 12:57:06', '2024-07-15 09:57:06', '2024-07-15 09:57:06'),
+	(9, '09d1fa61-f68f-4f22-bc09-f3028ef45255', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 9, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:34:13', '2024-07-15 10:34:13', '2024-07-15 10:34:13'),
+	(10, '1b8d2695-8041-4074-a531-c66b941fc9ed', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 10, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:44:00', '2024-07-15 10:44:00', '2024-07-15 10:44:00'),
+	(11, '1d812eb0-0eac-4333-81fe-a126e6efaec1', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 11, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:44:38', '2024-07-15 10:44:38', '2024-07-15 10:44:38'),
+	(12, 'e585f09e-bb02-4e09-8a57-58e0339434e9', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 12, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:49:17', '2024-07-15 10:49:17', '2024-07-15 10:49:17'),
+	(13, '11c8ced9-f073-4f4e-9dc8-9be888b0ce4c', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 13, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:50:43', '2024-07-15 10:50:43', '2024-07-15 10:50:43'),
+	(14, '225a7691-afab-4ab6-b159-21e36ab04bea', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 14, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:52:30', '2024-07-15 10:52:30', '2024-07-15 10:52:30'),
+	(15, 'b10696cf-26d1-430d-af94-3cedc5929ddd', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 15, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 13:53:56', '2024-07-15 10:53:56', '2024-07-15 10:53:56'),
+	(16, 'f95547e7-bd6a-4323-8142-88546c16e3e5', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 16, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:03:58', '2024-07-15 11:03:58', '2024-07-15 11:03:58'),
+	(17, 'e79e6226-dd9c-4d6c-93dd-adabb4ab4dda', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 17, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:06:17', '2024-07-15 11:06:17', '2024-07-15 11:06:17'),
+	(18, '29f4d695-5e4c-4c81-9ade-ca9b41f3f037', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 18, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:07:26', '2024-07-15 11:07:26', '2024-07-15 11:07:26'),
+	(19, '68d8ca99-a164-45e5-877b-0e60b3e1303a', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 19, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:07:59', '2024-07-15 11:07:59', '2024-07-15 11:07:59'),
+	(20, '7f9c4f3f-9955-4c5b-a698-685b302c318f', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 20, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:08:45', '2024-07-15 11:08:45', '2024-07-15 11:08:45'),
+	(21, '52e20f36-c255-49f8-b97b-0f8b14278304', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 21, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:09:50', '2024-07-15 11:09:50', '2024-07-15 11:09:50'),
+	(22, 'a6e0d266-33bb-490c-9816-eb660ea1e76a', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 22, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:25:07', '2024-07-15 11:25:07', '2024-07-15 11:25:07'),
+	(23, '7af2f44f-9a2f-4844-8d0d-df0b0a9d5b56', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 23, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:26:51', '2024-07-15 11:26:51', '2024-07-15 11:26:51'),
+	(24, '9ca0af32-0baa-4490-a5fc-c2b5c6c09b2c', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 24, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:27:01', '2024-07-15 11:27:01', '2024-07-15 11:27:01'),
+	(25, '1aed6da0-c7dc-452c-aa67-74010ff8b35a', 9, NULL, '0.00', '150.00', 1, 1, NULL, '2', '3', 25, NULL, NULL, NULL, 'NEW', NULL, '2024-07-15 14:53:09', '2024-07-15 11:53:09', '2024-07-15 11:53:09');
 
 -- Dumping structure for table folex.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -321,7 +342,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(62, '2024_02_08_142601_create_otps_table', 1);
 
 -- Dumping structure for table folex.oauth_access_tokens
-DROP TABLE IF EXISTS `oauth_access_tokens`;
 CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
   `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint unsigned DEFAULT NULL,
@@ -340,7 +360,6 @@ CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
 DELETE FROM `oauth_access_tokens`;
 
 -- Dumping structure for table folex.oauth_auth_codes
-DROP TABLE IF EXISTS `oauth_auth_codes`;
 CREATE TABLE IF NOT EXISTS `oauth_auth_codes` (
   `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint unsigned NOT NULL,
@@ -356,7 +375,6 @@ CREATE TABLE IF NOT EXISTS `oauth_auth_codes` (
 DELETE FROM `oauth_auth_codes`;
 
 -- Dumping structure for table folex.oauth_clients
-DROP TABLE IF EXISTS `oauth_clients`;
 CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint unsigned DEFAULT NULL,
@@ -377,7 +395,6 @@ CREATE TABLE IF NOT EXISTS `oauth_clients` (
 DELETE FROM `oauth_clients`;
 
 -- Dumping structure for table folex.oauth_personal_access_clients
-DROP TABLE IF EXISTS `oauth_personal_access_clients`;
 CREATE TABLE IF NOT EXISTS `oauth_personal_access_clients` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `client_id` bigint unsigned NOT NULL,
@@ -390,7 +407,6 @@ CREATE TABLE IF NOT EXISTS `oauth_personal_access_clients` (
 DELETE FROM `oauth_personal_access_clients`;
 
 -- Dumping structure for table folex.oauth_refresh_tokens
-DROP TABLE IF EXISTS `oauth_refresh_tokens`;
 CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
   `id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `access_token_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -404,7 +420,6 @@ CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
 DELETE FROM `oauth_refresh_tokens`;
 
 -- Dumping structure for table folex.otps
-DROP TABLE IF EXISTS `otps`;
 CREATE TABLE IF NOT EXISTS `otps` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -425,7 +440,6 @@ INSERT INTO `otps` (`id`, `identifier`, `token`, `validity`, `expired`, `no_time
 	(7, 'admin@doc.com', '03107323', 30, 0, 1, 0, '2024-07-12 14:00:37', '2024-07-12 06:00:37', '2024-07-12 06:00:37');
 
 -- Dumping structure for table folex.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -437,7 +451,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 DELETE FROM `password_resets`;
 
 -- Dumping structure for table folex.payments
-DROP TABLE IF EXISTS `payments`;
 CREATE TABLE IF NOT EXISTS `payments` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -463,7 +476,6 @@ CREATE TABLE IF NOT EXISTS `payments` (
 DELETE FROM `payments`;
 
 -- Dumping structure for table folex.personal_access_tokens
-DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -483,7 +495,6 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 DELETE FROM `personal_access_tokens`;
 
 -- Dumping structure for table folex.ref_levels
-DROP TABLE IF EXISTS `ref_levels`;
 CREATE TABLE IF NOT EXISTS `ref_levels` (
   `level` int DEFAULT NULL,
   `ref_num` int DEFAULT NULL,
@@ -494,7 +505,6 @@ CREATE TABLE IF NOT EXISTS `ref_levels` (
 DELETE FROM `ref_levels`;
 
 -- Dumping structure for table folex.roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -511,7 +521,6 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'user', NULL, NULL);
 
 -- Dumping structure for table folex.sessions
-DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint unsigned DEFAULT NULL,
@@ -524,13 +533,12 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table folex.sessions: ~6 rows (approximately)
+-- Dumping data for table folex.sessions: ~2 rows (approximately)
 DELETE FROM `sessions`;
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('EcTkY5QpBp4wkQuEdZ9xyW8SdbhWiS6Mjdl939ay', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZ281R0FzWGdBdlRROUthaVZKSkZEQ1E3NWs1a1RYRWhlRmVwVXo1ZiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjExNDoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3BheS9taW5lcnM/X3Rva2VuPWdvNUdBc1hnQXZUUTlLYWlWSkpGRENRNzVrNWtUWEVoZUZlcFV6NWYmY2FzaD0xNTAmY29pbl9kYXRhX2lkPTEmaGFzaGluZz0xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJsb2NhbGUiO3M6MjoiZW4iO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ1UERZSFJhZk1xMmJrQlVoWU5adUd1Z1Y4RGs0T213MWpzcHg2LjliOFZWWVpTQUVDZUlyNiI7fQ==', 1720885666);
+	('qsdwIMX0yVLcKSc1ezbBRPpDAf2mC24fC73jls7H', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiWXd2Zk1HZVpHZU44NkxOWnBSeFh2Q1FRN0JSMnJiYjBwSFFEdDFQayI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjc0OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvcGF5YnljcnlwdG8/cGlkPTUyMWYyNjVjLTU1OGMtNDRmNi1hNmZiLWNiZmZkMWQ5ZTYzOSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoibG9jYWxlIjtzOjI6ImVuIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo5O3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNVBEWUhSYWZNcTJia0JVaFlOWnVHdWdWOERrNE9tdzFqc3B4Ni45YjhWVllaU0FFQ2VJcjYiO30=', 1721073223);
 
 -- Dumping structure for table folex.settings
-DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `site_logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -549,7 +557,6 @@ INSERT INTO `settings` (`id`, `site_logo`, `vat`, `site_name`, `account_number`,
 	(1, NULL, '21', 'CloudMinePool', '1234567890', 'abcdefg', NULL, '2024-02-11 01:45:49');
 
 -- Dumping structure for table folex.stripe_payments
-DROP TABLE IF EXISTS `stripe_payments`;
 CREATE TABLE IF NOT EXISTS `stripe_payments` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -576,7 +583,6 @@ CREATE TABLE IF NOT EXISTS `stripe_payments` (
 DELETE FROM `stripe_payments`;
 
 -- Dumping structure for table folex.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -608,22 +614,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `referral` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `enable_2fa` tinyint(1) NOT NULL DEFAULT '0',
   `referrals_cnt` int DEFAULT '0',
+  `wa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table folex.users: ~6 rows (approximately)
 DELETE FROM `users`;
-INSERT INTO `users` (`id`, `public_id`, `first_name`, `last_name`, `email`, `password`, `mailchimp_id`, `is_mailchimp_synced`, `stripe_customer_id`, `stripe_full_name`, `two_factor_secret`, `two_factor_recovery_codes`, `avatar`, `role_id`, `referred_by`, `phone`, `address`, `country`, `city`, `state`, `zip`, `email_verified_at`, `created_at`, `updated_at`, `deleted_at`, `remember_token`, `locale`, `referral`, `enable_2fa`, `referrals_cnt`) VALUES
-	(1, '2ffc26ea-1a5e-4ba2-8c1e-feed3547facf', 'Super', 'Admin', 'super@cloudminepool.com', '$2y$10$0U.0I/VdI6jaqa4VNzyeNeRZpKD8ffp2zIhDehjyBtUiQ/Wy9F3qK', NULL, 0, NULL, NULL, 'O44XFNZ57LIMUPCI2A2UERDEOW6IN6MC36YWUQZYTMBJPSP5ULMKDQNJL4O7HHT7', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-09 20:59:26', NULL, '2024-02-11 01:47:27', NULL, 'WFxyBhPCtN6YXaFjGo4lvva3s7p92ky6Ec1YO4VojyM0FV45Jr3wUOK3SPCS', 'en', 'super_folex', 1, 0),
-	(2, '298c8d3e-a9a9-4ae7-9aef-7603ddd11c01', 'Admin', 'Admin', 'admin@cloudminepool.com', '$2y$10$Eymz21CuDJRLPJn7laQTqe03UHCikYUJd3enZBZg2j0fcKSyl1OzS', NULL, 0, NULL, NULL, 'JN5ONCLEGJYTDJHGI3BEQ5UEVAWGCW7EDUIZ6CEQMEJISK5ZDLAK3ID7YVTG5XSU', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-10 17:19:35', NULL, '2024-02-10 17:25:18', NULL, NULL, 'en', 'admin_folex', 0, 0),
-	(6, 'cryptomusha', 'Thomas', 'Lin', 'cryptomusha@gmail.com', '$2y$10$wDvgrnHQ0croMVChXwruDexgKsLQvXKb9Oer0nS/XNpOxK0UKxhwO', NULL, 0, NULL, NULL, 'DHOS5HP6HADLBIVN6CEUUDR3XITVQP2TT4G7K43HHGDEZ3YPSIC4SKRJRDZ2QXEQ', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-10 17:18:00', '2024-02-10 17:02:32', '2024-02-10 17:18:00', NULL, NULL, 'en', '66853618d598', 0, 0),
-	(7, 'test', 'test', 'test', 'test@test.com', '$2y$10$s7nrq7Hq47L4MAe46fkTaeh7F6gsLeBxGIN8vHN3iGudTBDKlJPrO', NULL, 0, NULL, NULL, 'VY7NYG7S5NRFMWXJOS4D5XONJDU6ZZBCCLPOKSL3QY24AXKD6LSELB3U44TJWDE3', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-11 01:41:01', '2024-02-11 01:40:24', '2024-02-11 01:49:11', NULL, '0phnFhXzdhwXV1YtPgtiszniMgeJZW3YesRpGpjN0svfEJhfcj4I0luoaoJ8', 'de', 'hVP1BDfLljM', 1, 0),
-	(8, 'KellyBender65864', 'oNnRpVdHLfQ', 'WaQYPAbUelqXOC', 'KellyBender65864@outlook.com', '$2y$10$BzSgjub3idlGJzX/tF508u8IYx7rsgxaZLgaKiDypl54rx491G7wW', 'f057d9b637eaea16f3707686014e5aa2', 1, NULL, NULL, 'MDGQ2KLAZN2TEXXAGY4CJEDOBFW4YZP5OH2T6X24R6YRA5H7P6PU6GC2EFE63QZH', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-07-12 17:03:32', '2024-02-11 21:48:19', '2024-02-14 00:00:05', NULL, NULL, 'en', 'TB4lUik1cM4', 0, 0),
-	(9, 'admin', 'ryan', 'macleod', 'admin@doc.com', '$2y$10$5PDYHRafMq2bkBUhYNZuGugV8Dk4Omw1jspx6.9b8VVYZSAECeIr6', NULL, 0, NULL, NULL, 'HR67GNR6WYUXX6CVIJFKOYGSJGPBIPEWMAYP2HP7ZCZZ456NGY3JF4JRU5XZEXMO', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-07-12 17:03:31', '2024-07-12 06:00:37', '2024-07-12 06:00:37', NULL, NULL, 'en', 'yk5QdXCNpAU', 0, 0);
+INSERT INTO `users` (`id`, `public_id`, `first_name`, `last_name`, `email`, `password`, `mailchimp_id`, `is_mailchimp_synced`, `stripe_customer_id`, `stripe_full_name`, `two_factor_secret`, `two_factor_recovery_codes`, `avatar`, `role_id`, `referred_by`, `phone`, `address`, `country`, `city`, `state`, `zip`, `email_verified_at`, `created_at`, `updated_at`, `deleted_at`, `remember_token`, `locale`, `referral`, `enable_2fa`, `referrals_cnt`, `wa`) VALUES
+	(1, '2ffc26ea-1a5e-4ba2-8c1e-feed3547facf', 'Super', 'Admin', 'super@cloudminepool.com', '$2y$10$0U.0I/VdI6jaqa4VNzyeNeRZpKD8ffp2zIhDehjyBtUiQ/Wy9F3qK', NULL, 0, NULL, NULL, 'O44XFNZ57LIMUPCI2A2UERDEOW6IN6MC36YWUQZYTMBJPSP5ULMKDQNJL4O7HHT7', NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-09 20:59:26', NULL, '2024-02-11 01:47:27', NULL, 'WFxyBhPCtN6YXaFjGo4lvva3s7p92ky6Ec1YO4VojyM0FV45Jr3wUOK3SPCS', 'en', 'super_folex', 1, 0, NULL),
+	(2, '298c8d3e-a9a9-4ae7-9aef-7603ddd11c01', 'Admin', 'Admin', 'admin@cloudminepool.com', '$2y$10$Eymz21CuDJRLPJn7laQTqe03UHCikYUJd3enZBZg2j0fcKSyl1OzS', NULL, 0, NULL, NULL, 'JN5ONCLEGJYTDJHGI3BEQ5UEVAWGCW7EDUIZ6CEQMEJISK5ZDLAK3ID7YVTG5XSU', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-10 17:19:35', NULL, '2024-02-10 17:25:18', NULL, NULL, 'en', 'admin_folex', 0, 0, NULL),
+	(6, 'cryptomusha', 'Thomas', 'Lin', 'cryptomusha@gmail.com', '$2y$10$wDvgrnHQ0croMVChXwruDexgKsLQvXKb9Oer0nS/XNpOxK0UKxhwO', NULL, 0, NULL, NULL, 'DHOS5HP6HADLBIVN6CEUUDR3XITVQP2TT4G7K43HHGDEZ3YPSIC4SKRJRDZ2QXEQ', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-10 17:18:00', '2024-02-10 17:02:32', '2024-02-10 17:18:00', NULL, NULL, 'en', '66853618d598', 0, 0, NULL),
+	(7, 'test', 'test', 'test', 'test@test.com', '$2y$10$s7nrq7Hq47L4MAe46fkTaeh7F6gsLeBxGIN8vHN3iGudTBDKlJPrO', NULL, 0, NULL, NULL, 'VY7NYG7S5NRFMWXJOS4D5XONJDU6ZZBCCLPOKSL3QY24AXKD6LSELB3U44TJWDE3', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-02-11 01:41:01', '2024-02-11 01:40:24', '2024-02-11 01:49:11', NULL, '0phnFhXzdhwXV1YtPgtiszniMgeJZW3YesRpGpjN0svfEJhfcj4I0luoaoJ8', 'de', 'hVP1BDfLljM', 1, 0, NULL),
+	(8, 'KellyBender65864', 'oNnRpVdHLfQ', 'WaQYPAbUelqXOC', 'KellyBender65864@outlook.com', '$2y$10$BzSgjub3idlGJzX/tF508u8IYx7rsgxaZLgaKiDypl54rx491G7wW', 'f057d9b637eaea16f3707686014e5aa2', 1, NULL, NULL, 'MDGQ2KLAZN2TEXXAGY4CJEDOBFW4YZP5OH2T6X24R6YRA5H7P6PU6GC2EFE63QZH', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-07-12 17:03:32', '2024-02-11 21:48:19', '2024-02-14 00:00:05', NULL, NULL, 'en', 'TB4lUik1cM4', 0, 0, NULL),
+	(9, 'admin', 'ryan', 'macleod', 'admin@doc.com', '$2y$10$5PDYHRafMq2bkBUhYNZuGugV8Dk4Omw1jspx6.9b8VVYZSAECeIr6', NULL, 0, NULL, NULL, 'HR67GNR6WYUXX6CVIJFKOYGSJGPBIPEWMAYP2HP7ZCZZ456NGY3JF4JRU5XZEXMO', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-07-12 17:03:31', '2024-07-12 06:00:37', '2024-07-15 11:53:09', NULL, NULL, 'en', 'yk5QdXCNpAU', 0, 0, 'TYUZWsrHJ5kccWHjiWPXwJYgAZkQydBCPv');
 
 -- Dumping structure for table folex.user_banks
-DROP TABLE IF EXISTS `user_banks`;
 CREATE TABLE IF NOT EXISTS `user_banks` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -649,7 +655,6 @@ INSERT INTO `user_banks` (`id`, `public_id`, `user_id`, `account_holder_name`, `
 	(1, 'a42d8f72-00e9-4a40-80a1-df9f595ec579', 7, 'Test tester', '142000', 'Angola', 'AUD', 'Test bank', '188393991', 'fhjdkskkkkskkdkd', 'Routing number', 0, '2024-02-13 03:16:50', '2024-02-13 03:16:50', NULL);
 
 -- Dumping structure for table folex.user_codes
-DROP TABLE IF EXISTS `user_codes`;
 CREATE TABLE IF NOT EXISTS `user_codes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -663,7 +668,6 @@ CREATE TABLE IF NOT EXISTS `user_codes` (
 DELETE FROM `user_codes`;
 
 -- Dumping structure for table folex.user_cryptos
-DROP TABLE IF EXISTS `user_cryptos`;
 CREATE TABLE IF NOT EXISTS `user_cryptos` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -675,13 +679,14 @@ CREATE TABLE IF NOT EXISTS `user_cryptos` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table folex.user_cryptos: ~0 rows (approximately)
 DELETE FROM `user_cryptos`;
+INSERT INTO `user_cryptos` (`id`, `public_id`, `user_id`, `crypto_option_id`, `wallet_address`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, '2fed48a4-f80c-4161-b9ac-39995227e59f', 9, 6, 'TE7Q4pa3HpaVhmXwpCpm2C52wu6c8KWXsj', 0, '2024-07-15 11:42:50', '2024-07-15 11:42:50', NULL);
 
 -- Dumping structure for table folex.wallets
-DROP TABLE IF EXISTS `wallets`;
 CREATE TABLE IF NOT EXISTS `wallets` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -696,7 +701,6 @@ CREATE TABLE IF NOT EXISTS `wallets` (
 DELETE FROM `wallets`;
 
 -- Dumping structure for table folex.withdraw_requests
-DROP TABLE IF EXISTS `withdraw_requests`;
 CREATE TABLE IF NOT EXISTS `withdraw_requests` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `public_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
