@@ -19,7 +19,7 @@ public_html/storage
 public_html/hot
 
 storage/*.key
-.env
+# .env
 .env.live
 .env-origin
 Homestead.yaml
