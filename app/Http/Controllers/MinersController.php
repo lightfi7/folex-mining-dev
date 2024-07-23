@@ -130,6 +130,7 @@ class MinersController extends Controller
                 $record->amount_sum = 0;
             }
         }
+//        dd("profit_by_coin", $profit_by_coin);
         $sum_of_profit_by_coin = collect($profit_by_coin)->sum('amount_sum');
 
         $me = User::where("id", Auth::user()->id)

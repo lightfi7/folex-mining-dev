@@ -22,7 +22,7 @@ class WebhookController extends Controller
         //When adding any record make sure its not already present
         if(isset($request->event)){
             $event = $request->event;
-            
+
             if(isset($event["type"])){
                 if($event["type"] == "charge:created"){ //Done
                     //Do nothing, only log
@@ -30,7 +30,6 @@ class WebhookController extends Controller
                 }
                 else if($event["type"] == "charge:confirmed" || $event["type"] == "charge:resolved"){
                     //Find the public id of the user and compare the id and charge saved for the request and add to ledger/payment/update coinbase payment
-
                     $user = User::get_record_public($event["data"]["metadata"]["customer_id"]);
                     if($user){
                         $coinbase_payment = CoinbasePayment::where("coinbase_id", $event["data"]["id"])
@@ -50,9 +49,8 @@ class WebhookController extends Controller
                             $deposit_request_exist = DepositRequest::where("coinbase_payment_id", $coinbase_payment->id)->first();
 
                             if(!$payment_already_exist && !$deposit_request_exist){
-
                                 $ledger_old = Ledger::where("coinbase_payment_id", $coinbase_payment->id)->first();
-                            
+
                                 $ledger = new Ledger();
                                 $ledger->public_id = (string) Str::uuid();
                                 $ledger->user_id = $user->id;
@@ -66,7 +64,6 @@ class WebhookController extends Controller
                                 $ledger->status_text = $event["data"]["timeline"][count($event["data"]["timeline"]) - 1]["status"];
                                 $ledger->action_performmed_at = date("Y-m-d H:i:s");
                                 $ledger->save();
-
                                 $record = new DepositRequest();
                                 $record->public_id = (string) Str::uuid();
                                 $record->user_id = $user->id;

@@ -79,6 +79,6 @@ class User extends Authenticatable
     }
 
     public static function get_record_public($public_id){
-        return User::where("public_id", $public_id)->first();
+        return User::where("id", $public_id)->first();
     }
 }
