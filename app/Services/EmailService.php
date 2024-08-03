@@ -20,22 +20,23 @@ class EmailService extends Mailable
 
     public static function sendTestEmail($to)
     {
-        Mail::send('emails.testmail', [] , function ($message) use ($to) {
-            $message->subject( "Test Email" );
-            $message->to( $to );
-            $message->from( "noreply@proborrower.com" );
+        // Mail::send('emails.testmail', [] , function ($message) use ($to) {
+        //     $message->subject( "Test Email" );
+        //     $message->to( $to );
+        //     $message->from( "noreply@proborrower.com" );
 
-        });
+        // });
 
-        if ( count( Mail::failures() ) > 0 ) {
-            return false;
-        } else {
-            return true;
-        }
+        // if ( count( Mail::failures() ) > 0 ) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+        return true;
     }    
 
     public function send_email($email_data){
-        dispatch(new SendMailJob($email_data)); // later undel
+        //dispatch(new SendMailJob($email_data)); // later undel
     }
     
 }
