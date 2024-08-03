@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Str;
-use App\Mail\SendCodeMail;
-use Mail;
+// use App\Mail\SendCodeMail;
+// use Mail;
 use PHLAK\StrGen;
 use PragmaRX\Google2FA\Google2FA;
 
