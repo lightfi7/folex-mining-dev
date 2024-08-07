@@ -582,6 +582,7 @@ function languages(){
     return [
         "en" => [__("English"), url('plugins\lang_fonts\flags\1x1\gb.svg')],
         "de" => [__("German"), url('plugins\lang_fonts\flags\1x1\de.svg')],
+        "fr" => [__("French "), url('plugins\lang_fonts\flags\1x1\fr.svg')] ,
         "es" => [__("Spanish"), url('plugins\lang_fonts\flags\1x1\es.svg')],
         "ru" => [__("Russian"), url('plugins\lang_fonts\flags\1x1\ru.svg')],
         "it" => [__("Italish"), url('plugins\lang_fonts\flags\1x1\it.svg')],
