@@ -585,8 +585,8 @@ function languages(){
         "fr" => [__("French "), url('plugins\lang_fonts\flags\1x1\fr.svg')] ,
         "es" => [__("Spanish"), url('plugins\lang_fonts\flags\1x1\es.svg')],
         "ru" => [__("Russian"), url('plugins\lang_fonts\flags\1x1\ru.svg')],
-        "it" => [__("Italian"), url('plugins\lang_fonts\flags\1x1\it.svg')],
-        "pt" => [__("Portuguese "), url('plugins\lang_fonts\flags\1x1\pt.svg')]
+        "pt" => [__("Portuguese "), url('plugins\lang_fonts\flags\1x1\pt.svg')],
+        "it" => [__("Italian"), url('plugins\lang_fonts\flags\1x1\it.svg')]
     ];
 }
 
