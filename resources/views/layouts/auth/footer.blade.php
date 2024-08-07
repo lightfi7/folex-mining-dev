@@ -7,7 +7,7 @@
             <a href='{{url('lang/es')}}' class='text-primary {{session()->get('locale') == "es" ? "fw-bold" : ""}}'>{{__("Spanish")}}</a>|
             <a href='{{url('lang/ru')}}' class='text-primary {{session()->get('locale') == "ru" ? "fw-bold" : ""}}'>{{__("Russian")}}</a>|
             <a href='{{url('lang/pt')}}' class='text-primary {{session()->get('locale') == "it" ? "fw-bold" : ""}}'>{{__("Portuguese")}}</a>|
-            <a href='{{url('lang/it')}}' class='text-primary {{session()->get('locale') == "pt" ? "fw-bold" : ""}}'>{{__("Italish")}}</a>
+            <a href='{{url('lang/it')}}' class='text-primary {{session()->get('locale') == "pt" ? "fw-bold" : ""}}'>{{__("Italian")}}</a>
         </div>
     </div>
 </footer>
