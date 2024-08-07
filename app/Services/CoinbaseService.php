@@ -24,7 +24,7 @@ class CoinbaseService {
                 ],
                 "metadata" => [
                         "customer_id"=> Auth::user()->id,
-                        "customer_name" => Auth::user()->email
+                        "customer_email" => Auth::user()->email
                         ],
                 "redirect_url"=> $redirect_url,
                 "cancel_url"=> $cancel_url
