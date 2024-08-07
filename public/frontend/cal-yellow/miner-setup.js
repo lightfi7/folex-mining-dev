@@ -43,7 +43,7 @@ setup.ionRangeSlider({
         var $money = $average * $item_price;
         $investition_input.val(Math.round($money));
         $average_input.val($average);
-        var $income_calc = getProfit($average,30);
+        var $income_calc = getProfit($average, 30);
         if ($bonus_checkbox.is(":checked")) {
             $income_calc = $income_calc * ($bonus / 100 + 1);
         }
@@ -63,7 +63,7 @@ setup.ionRangeSlider({
         $investition_input.val(Math.round($money));
         $average_input.val($average);
         // var $income_calc = ($money / 100) * $profit_rate;
-        var $income_calc = getProfit($average,30);
+        var $income_calc = getProfit($average, 30);
         if ($bonus_checkbox.is(":checked")) {
             $income_calc = $income_calc * ($bonus / 100 + 1);
         }
@@ -81,7 +81,7 @@ setup.ionRangeSlider({
         console.log('here i am onUpdate')
         var $average = data.from;
         var $money = $average * $item_price;
-        var $income_calc = getProfit($average,30);
+        var $income_calc = getProfit($average, 30);
         if ($bonus_checkbox.is(":checked")) {
             $income_calc = $income_calc * ($bonus / 100 + 1);
         }
@@ -95,9 +95,9 @@ setup.ionRangeSlider({
     }
 });
 
-function getProfit(p,n) {
+function getProfit(p, n) {
     var hash = p * 1000000000000;
-    return (hash*$sha_256_reward_block*n*$s)/($sha_256_difficulty*4294967296)
+    return (hash * $sha_256_reward_block * n * $s) / ($sha_256_difficulty * 4294967296)
 }
 
 function hashRate(from) {

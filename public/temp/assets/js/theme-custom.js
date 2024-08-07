@@ -128,21 +128,21 @@ var getSelectedRadio = function getSelectedRadio(radioName) {
 }
 
 //Muze Reload Page And Set item By LocalStorage JavaScript
-document.querySelector('#CustomizerPreview').addEventListener('click', event => {
-  var skin = getSelectedRadio('MuzeSkins');
-  localStorage.setItem('selectedSkin', skin);
-  var rtlMode = document.getElementById('RTLMode');
-  localStorage.setItem('rtlModeCheck', rtlMode.checked);
-  localStorage.setItem('rtlModeValue', rtlMode.value);
-  var headerStyle = getSelectedRadio('HeaderStyles');
-  localStorage.setItem('headerStyle', headerStyle);
-  var sidebarStyle = getSelectedRadio('SidebarStyles');
-  localStorage.setItem('sidebarStyle', sidebarStyle);
-  var fluidLayout = document.getElementById('FluidLayout');
-  localStorage.setItem('fluidLayoutCheck', fluidLayout.checked);
-  localStorage.setItem('fluidLayoutValue', fluidLayout.value);
-  window.location.reload();
-});
+// document.querySelector('#CustomizerPreview').addEventListener('click', event => {
+//   var skin = getSelectedRadio('MuzeSkins');
+//   localStorage.setItem('selectedSkin', skin);
+//   var rtlMode = document.getElementById('RTLMode');
+//   localStorage.setItem('rtlModeCheck', rtlMode.checked);
+//   localStorage.setItem('rtlModeValue', rtlMode.value);
+//   var headerStyle = getSelectedRadio('HeaderStyles');
+//   localStorage.setItem('headerStyle', headerStyle);
+//   var sidebarStyle = getSelectedRadio('SidebarStyles');
+//   localStorage.setItem('sidebarStyle', sidebarStyle);
+//   var fluidLayout = document.getElementById('FluidLayout');
+//   localStorage.setItem('fluidLayoutCheck', fluidLayout.checked);
+//   localStorage.setItem('fluidLayoutValue', fluidLayout.value);
+//   window.location.reload();
+// });
 
 //Muze Remove Local Storage And Reload Page JavaScript
 document.querySelector('#ResetCustomizer').addEventListener('click', event => {

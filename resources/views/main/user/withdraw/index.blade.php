@@ -8,6 +8,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h1 class="h2 mb-0 lh-sm">{{__("Withdraw")}}</h1>
+                    <h6>{{__("Pending 7days")}}</h6>
                 </div>
             </div>
         </div>

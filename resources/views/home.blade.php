@@ -81,7 +81,7 @@
     </div>
 </section>
 
-<section class="work-part ptb-100 lightskyblue container">
+<section class="work-part ptb-100 lightskyblue">
     <div class="row">
         <div class="col-md-12 wow fadeInUp">
             <div class="section-heading text-center pb-65">
@@ -95,7 +95,7 @@
     </div>
 
     <!-- best members table -->
-    <table class="responsive-table">
+    <table class="container responsive-table">
         <thead>
             <tr>
                 <th>{{__("User")}}</th>

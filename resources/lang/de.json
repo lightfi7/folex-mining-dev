@@ -320,5 +320,6 @@
     "Something went wrong. Refresh and try again":"",
     "Amount is exceeding maximum or is lower than minimum. Please refresh page and try again or contact support.":"",
     "Something went wrong. Please contact support":"",
-    "OTP is wrong!": "OTP is fout!"
+    "OTP is wrong!": "OTP is fout!",
+    "Pending 7days": "Ausstehend 7 Tage"
 }

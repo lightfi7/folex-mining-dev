@@ -49,11 +49,11 @@
         <input class="form-control form-control-xl" name="town" placeholder="{{__("Town")}}" id="town" type="text">
     </div>
 
-    <div class="col-md-6 pb-3 mb-md-4">
+    <!-- <div class="col-md-6 pb-3 mb-md-4">
         <label class="form-label form-label-lg">{{__("Select a country")}}</label>
-        <select id="country" name="country" required>
+        <select id="country" class="form-control form-contorl-xl" name="country" required>
             <option value="">{{__("Select a country")}}</option>
         </select>
-    </div>
+    </div> -->
 
 </div>

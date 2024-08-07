@@ -481,38 +481,5 @@ head>
         })();
     </script>
     <!--End of Tawk.to Script-->
-
-    <!-- metamask -->
-    <!-- <script>
-        if (typeof window.ethereum !== 'undefined') {
-            console.log('MetaMask is installed!');
-            const web3 = new Web3(window.ethereum);
-        } else {
-            console.log('MetaMask is not installed. Please install MetaMask to use this feature.');
-        }
-
-        async function getAccount() {
-            try {
-                // Request account access
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                // Use the first account
-                const account = accounts[0];
-                console.log('Account:', account);
-            } catch (error) {
-                console.error('User denied account access');
-            }
-        }
-
-        // Call the function to get the account
-        getAccount();
-
-        async function getBalance(account) {
-            const balance = await web3.eth.getBalance(account);
-            console.log('Balance:', web3.utils.fromWei(balance, 'ether'), 'ETH');
-        }
-
-        // Assuming you have the account from the previous step
-        getBalance(account);
-    </script> -->
 </body>
 </html>

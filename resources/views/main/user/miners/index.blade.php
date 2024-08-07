@@ -48,8 +48,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="px-3 px-xxl-5 py-3 py-lg-4 border-gray-200 after-header">
         <div class="container-fluid px-0">
+          
             <div class="col-xxl-12 mb-4">
                 <div class="pb-2 pt-3 mb-4 mb-xl-2">
+                    <div class="row">
+                        <div class="col-xxl-12 mb-4">
+                            <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                                <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                    <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{{__("Miners")}}</h5>
+                                </div>
+                                <div class="card-body px-0 p-md-4">
+                                    <div class="bd-example">
+                                        <div class="slim_scroll pb-5 miners-table">
+                                            <table class="table miners-table responsive-table" style="width: 100% !important;">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>{{__("Hashing")}}</th>
+                                                        <th>{{__("Power")}}</th>
+                                                        <th>{{__("Income")}}</th>
+                                                        <th>{{__("Coin Value")}}</th>
+                                                        <th>{{__("Date")}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if(count($miners) > 0)
+                                                    @foreach($miners as $key => $miner)
+                                                    <tr class="miners-table-row">
+                                                        <td class="expanded"><span>+</span></td>
+                                                        <td class="collapsed"><span>-</span></td>
+                                                        <td data-label='{{__("Hashing")}}'>{{$miner->hashings_name." ".$miner->coin_display_name}}</td>
+                                                        <td data-label='{{__("Power")}}'>{{$miner->energy_bought}} {{$miner->coin_unit}}</td>
+                                                        <td data-label='{{__("Income")}}'>${{to_cash_format_small($miner->amount_deposit)}}</td>
+                                                        <td data-label='{{__("Coin Value")}}'>{{get_payent_method($miner->payment_method)}}</td>
+                                                        <td data-label='{{__("Date")}}'>{{to_date($miner->created_at)}}</td>
+                                                    </tr>
+                                                    <tr class="under-section">
+                                                        <td colspan="6">
+                                                            <div>
+                                                                <span class="under-section-title">{{__("Deposited")}}:&nbsp;</span>
+                                                                <span class="under-section-value">${{to_cash_format_small($miner->amount_deposit)}}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span class="under-section-title">{{__("Earned Since Deposit")}}:&nbsp;</span>
+                                                                <span class="under-section-value">${{to_cash_format_small($miner->sum_amount)}}</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                    @else
+                                                    <tr class="text-center">
+                                                        <td colspan=5 style="padding-left: 0;text-align: center;">{{__("No Record Found")}}</td>
+                                                    </tr>
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="{{url('miners/create')}}" class="btn btn-primary">{{__("Add Miner")}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="row">
                         <div class="col-12">
                             @include("shared.alerts")
@@ -272,68 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
 
                     <div class="row">
-                        <div class="col-xxl-12 mb-4">
-                            <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
-                                <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                    <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{{__("Miners")}}</h5>
-                                </div>
-                                <div class="card-body px-0 p-md-4">
-                                    <div class="bd-example">
-                                        <div class="slim_scroll pb-5 miners-table">
-                                            <table class="table miners-table responsive-table" style="width: 100% !important;">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>{{__("Hashing")}}</th>
-                                                        <th>{{__("Power")}}</th>
-                                                        <th>{{__("Income")}}</th>
-                                                        <th>{{__("Coin Value")}}</th>
-                                                        <th>{{__("Date")}}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if(count($miners) > 0)
-                                                    @foreach($miners as $key => $miner)
-                                                    <tr class="miners-table-row">
-                                                        <td class="expanded"><span>+</span></td>
-                                                        <td class="collapsed"><span>-</span></td>
-                                                        <td data-label='{{__("Hashing")}}'>{{$miner->hashings_name." ".$miner->coin_display_name}}</td>
-                                                        <td data-label='{{__("Power")}}'>{{$miner->energy_bought}} {{$miner->coin_unit}}</td>
-                                                        <td data-label='{{__("Income")}}'>${{to_cash_format_small($miner->amount_deposit)}}</td>
-                                                        <td data-label='{{__("Coin Value")}}'>{{get_payent_method($miner->payment_method)}}</td>
-                                                        <td data-label='{{__("Date")}}'>{{to_date($miner->created_at)}}</td>
-                                                    </tr>
-                                                    <tr class="under-section">
-                                                        <td colspan="6">
-                                                            <div>
-                                                                <span class="under-section-title">{{__("Deposited")}}:&nbsp;</span>
-                                                                <span class="under-section-value">${{to_cash_format_small($miner->amount_deposit)}}</span>
-                                                            </div>
-                                                            <div>
-                                                                <span class="under-section-title">{{__("Earned Since Deposit")}}:&nbsp;</span>
-                                                                <span class="under-section-value">${{to_cash_format_small($miner->sum_amount)}}</span>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
-                                                    @else
-                                                    <tr class="text-center">
-                                                        <td colspan=5 style="padding-left: 0;text-align: center;">{{__("No Record Found")}}</td>
-                                                    </tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="text-center">
-                                            <a href="{{url('miners/create')}}" class="btn btn-primary">{{__("Add Miner")}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-xxl-12 mb-4">
+                    <div class="col-xxl-12 mb-4">
                             <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
                                 <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
                                     <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{{__("Income for the last 7 days")}}</h5>

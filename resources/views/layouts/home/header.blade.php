@@ -1,16 +1,15 @@
 <header class="transition">
     <div class="container">
-        <div class="row flex-align">
-            <div class="col-lg-2 col-md-2 col-sm-12">
+        <div class="row flex-align" >
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                 <div class="logo">
                     <a href="#"><img src="{{$site_data["site_logo"]}}" style="max-height:55px !important" class="transition" alt="{{$site_data["site_name"]}}"></a>
                 </div>
             </div>
-
-            <div class="col-lg-10 col-md-10 col-sm-12 text-right">
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9 text-right">
                 <div class="dropdown mobile grid-option dd-for-lang" style="width:25px; margin-right: 15px;">
                     <a href="#" class="text-dark ms-4 ms-xxl-5 h5 mb-0" data-bs-toggle="dropdown" aria-expanded="false" id="grid">
-                        <img src='{{@languages()[session("locale_for_none_user")??"en"][1]}}' height=33 >
+                        <img src='{{@languages()[session()->get("locale")][1]}}' height=33 >
                     </a>
                     <div class="dropdown-menu mobile dropdown-menu-end py-0" style='' aria-labelledby="grid" style="">
                         <div class="dropdown-header d-flex align-items-center px-4 py-2">
@@ -18,7 +17,7 @@
                         </div>
                         <div class="dropdown-footer text-center py-2 border-top border-gray-50">
                             @foreach (languages() as $locale => $lang)
-                                <a href="{{url("lang/$locale")}}" class="dropdown-item text-wrap">
+                                <a href="{{url('lang/$locale')}}" class="dropdown-item text-wrap">
                                     <div class="media align-items-center">
                                         <span class="me-3">
                                             <img class="avatar avatar-xs rounded-0" src="{{$lang[1]}}" alt="{{$lang[0]}}">
@@ -35,7 +34,6 @@
                 <div class="menu-toggle">
                     <span></span>
                 </div>
-
                 <div class="menu">
                     @if(url()->current() == url('/'))
                     <ul class="d-inline-block">
@@ -52,7 +50,7 @@
                      @endif
                      <div class="dropdown desktop grid-option dd-for-lang" style="width:25px; margin-right: 15px;">
                             <a href="#" class="text-dark ms-4 ms-xxl-5 h5 mb-0" data-bs-toggle="dropdown" aria-expanded="false" id="grid">
-                                <img src='{{@languages()[session("locale_for_none_user")??"en"][1]}}' height=33 >
+                                <img src='{{@languages()[session()->get("locale")][1]}}' height=33 >
                             </a>
                             <div class="dropdown-menu desktop dropdown-menu-end py-0" style='' aria-labelledby="grid" style="">
                                 <div class="dropdown-header d-flex align-items-center px-4 py-2">
