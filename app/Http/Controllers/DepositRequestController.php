@@ -107,7 +107,7 @@ class DepositRequestController extends Controller
             $wallet = new Wallet();
             $wallet->public_id = (string) Str::uuid();
             $wallet->user_id = $record->user_id;
-            $wallet->balance = 0;
+            $wallet->balance = $record->amount_deposited;
             $wallet->save();
         }
 

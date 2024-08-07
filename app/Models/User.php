@@ -81,4 +81,14 @@ class User extends Authenticatable
     public static function get_record_public($public_id){
         return User::where("id", $public_id)->first();
     }
+
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'referred_by', 'id');
+    }
+
+    public function referrer()
+    {
+        return $this->belongsTo(User::class, 'referred_by', 'id');
+    }
 }
