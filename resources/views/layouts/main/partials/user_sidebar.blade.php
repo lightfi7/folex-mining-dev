@@ -12,31 +12,31 @@ $home_url = url("/");
 
             <li class="nav-item miners">
                 <a class="nav-link" href="{{url("miners")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-industry fa-lg" ></i>
+                    <i style="width: 20px" class="fa fa-industry fa-lg" ></i>
                      &nbsp;<span class="ms-2">{{__("Miners")}}</span>
                 </a>
             </li>
             <li class="nav-item withdraw">
                 <a class="nav-link" href="{{url("withdraw")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-shopping-cart fa-lg"></i>
+                    <i style="width: 20px" class="fa fa-shopping-cart fa-lg"></i>
                      &nbsp;<span class="ms-2">{{__("Withdraw")}}</span>
                 </a>
             </li>
             <li class="nav-item requests">
                 <a class="nav-link" href="{{url("user-requests")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-list fa-lg" ></i>
+                    <i style="width: 20px" class="fa fa-list fa-lg" ></i>
                      &nbsp;<span class="ms-2">{{__("Requests")}}</span>
                 </a>
             </li>
             <li class="nav-item referrals">
                 <a class="nav-link" href="{{url("referrals")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-tag fa-lg"></i>
+                    <i style="width: 20px" class="fa fa-tag fa-lg"></i>
                      &nbsp;<span class="ms-2">{{__("Referrals")}}</span>
                 </a>
             </li>
             <li class="nav-item invoice">
                 <a class="nav-link" href="{{url("invoice")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-file fa-lg" ></i>
+                    <i style="width: 20px" class="fa fa-file fa-lg" ></i>
                      &nbsp;<span class="ms-2">{{__("Invoices")}}</span>
                 </a>
             </li>
@@ -44,7 +44,7 @@ $home_url = url("/");
 
             <li class="nav-item account">
                 <a class="nav-link" href="{{url("account")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="fa fa-user fa-lg"></i>
+                    <i style="width: 20px" class="fa fa-user fa-lg"></i>
                      &nbsp;<span class="ms-2">{{__("Account")}}</span>
                 </a>
             </li>
