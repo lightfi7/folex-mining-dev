@@ -109,6 +109,9 @@ class DepositRequestController extends Controller
             $wallet->user_id = $record->user_id;
             $wallet->balance = $record->amount_deposited;
             $wallet->save();
+        }else{
+            $wallet->balance += $record->amount_deposited;
+            $wallet->save();
         }
 
         //UPDATING LEDGER

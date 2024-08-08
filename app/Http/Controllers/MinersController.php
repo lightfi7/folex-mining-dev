@@ -44,34 +44,16 @@ class MinersController extends Controller
         $active_item = "miners";
         
 
-        // $miners = Payment::with(["coin", "hashings"])->where("user_id", Auth::user()->id)
-        //                 ->with("users", "hashings")
-        //                 ->leftJoin("ledgers", "ledgers.payment_id", "=", "payment.id")
-        //                 ->get();
         $miners = Payment::with(["coin", "hashings"])->where("user_id", Auth::user()->id)
                         ->with("users", "hashings")
                         ->get();
-        //$miners = DB::select("select a.*, hashings.name as hashings_name, coin_data.coin_display_name as coin_display_name, coin_data.unit as coin_unit from (SELECT payments.id, payments.coin_data_id, payments.hashing_id, payments.energy_bought, payments.amount_deposit, payments.payment_method, payments.created_at, sum(ledgers.amount) as sum_amount FROM payments left join ledgers on payments.id = ledgers.payment_id where payments.user_id=? and ledgers.type=4 group by payments.id, payments.coin_data_id, payments.hashing_id, payments.energy_bought, payments.amount_deposit, payments.payment_method, payments.created_at) a left join hashings on a.hashing_id=hashings.id left join coin_data on a.coin_data_id=coin_data.id order by a.id asc", [Auth::user()->id]);
 
 
-
-        $incomes = Ledger::with(["coin", "hashings"])
-                            ->where("user_id", Auth::user()->id)
-                            //->where("type", 2)
-                            ->with("hashings", "payments")
-                            ->where("action_performmed_at", ">", date("Y-m-d H:i:s", strtotime("-7 Days")))
-                            ->get();
-        //$incomes = Ledger::leftJoin("coin_data", "coin_data.id", "=", "ledgers.coin_data_id")
-        //                    ->leftJoin("hashings", "hashings.id", "=", "ledgers.hashing_id")
-        //                    ->where("user_id", Auth::user()->id)
-        //                    ->where("type", 4)
-        //                    ->with("hashings", "payments")
-        //                    ->where("action_performmed_at", ">", date("Y-m-d H:i:s", strtotime("-7 Days")))
-        //                    ->get();
-        // foreach ($incomes as $income) {
-        //     dd($incomes);
-        // }
-        //dd($incomes);
+        $incomes = Ledger::where("user_id", Auth::user()->id)
+                    ->where("type", 4)
+                    ->with("hashings", "payments", 'coin')
+                    ->where("action_performmed_at", ">", date("Y-m-d H:i:s", strtotime("-7 Days")))
+                    ->get();
 
         $total_power = Hashing::select(
                                 "hashings.id as hashing_id",
