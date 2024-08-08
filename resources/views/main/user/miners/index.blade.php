@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     @endforeach
                                                     @else
                                                     <tr class="text-center">
-                                                        <td colspan=5 style="padding-left: 0;text-align: center;">{{__("No Record Found")}}</td>
+                                                        <td colspan="6" style="padding-left: 0;text-align: center;">{{__("No Record Found")}}</td>
                                                     </tr>
                                                     @endif
                                                 </tbody>

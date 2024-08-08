@@ -11,7 +11,7 @@
         <ul class="navbar-nav mb-2" id="accordionExample" data-simplebar>
             <li class="nav-item dashboard">
                 <a class="nav-link" href="{{url("dashboard")}}" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i width="19.498" height="17.546" class="fa fa-dashboard fa-lg"></i>
+                    <i class="fa fa-dashboard fa-lg"></i>
                     &nbsp;<span class="ms-2">Dashboard</span>
                 </a>
             </li>
@@ -45,7 +45,7 @@
 
             <li class="nav-item account">
                 <a class="nav-link" href="{{url('account')."?section=upcoming"}}">
-                    <i width="19.498" height="17.546" class="fa fa-user fa-lg"></i>
+                    <i class="fa fa-user fa-lg"></i>
                     &nbsp;<span class="ms-2">Account</span>
                 </a>
             </li>
