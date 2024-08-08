@@ -229,74 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
 
 
-                    <!-- estimated / actual for coins -->
-                    <!-- <div class="row">
-                    @foreach ($total_power as $record)
-                        @if (count($total_power) == 3)
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        @else
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                        @endif
-                            <div class="card mb-4 rounded-12 shadow border border-gray-50">
-                                <div class="profit-container">
-                                    <div class="profit-item">
-                                        <div class="profit-item-col first-col">
-                                            <span style="font-weight: 600;">{{__("Estimated")}}</span>
-                                        </div>
-                                        <div class="profit-item-col second-col">
-                                            <span style="font-weight: 600;">{{__("Actual")}}</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="profit-item">
-                                        <div class="profit-item-col first-col">
-                                            <div>{{__("Daily")}}</div>
-                                            <div>${{to_cash_format_small($record->income_per_unit * $record->purchased)}}</div>
-                                        </div>
-                                        <div class="profit-item-col second-col">
-                                            <div>{{__("Daily")}}</div>
-                                            <div>{{to_cash_format_small(0.00)}}</div>                                        
-                                        </div>
-                                    </div>
-
-                                    <div class="profit-item">
-                                        <div class="profit-item-col first-col">
-                                            <div>{{__("Weekly")}}</div>
-                                            <div>${{to_cash_format_small($record->income_per_unit * $record->purchased * 7)}}</div>
-                                        </div>
-                                        <div class="profit-item-col second-col">
-                                            <div>{{__("Weekly")}}</div>
-                                            <div>{{to_cash_format_small(0.00)}}</div>                                        
-                                        </div>
-                                    </div>
-
-                                    <div class="profit-item">
-                                        <div class="profit-item-col first-col">
-                                            <div>{{__("Monthly")}}</div>
-                                            <div>${{to_cash_format_small($record->income_per_unit * $record->purchased * 31)}}</div>
-                                        </div>
-                                        <div class="profit-item-col second-col">
-                                            <div>{{__("Monthly")}}</div>
-                                            <div>{{to_cash_format_small(0.00)}}</div>                                        
-                                        </div>
-                                    </div>
-
-                                    <div class="profit-item">
-                                        <div class="profit-item-col first-col">
-                                            <div>{{__("Yearly")}}</div>    
-                                            <div>${{to_cash_format_small($record->income_per_unit * $record->purchased * 365)}}</div>
-                                        </div>
-                                        <div class="profit-item-col second-col">
-                                            <div>{{__("Yearly")}}</div>
-                                            <div>{{to_cash_format_small(0.00)}}</div>                                        
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                    </div> -->
+                 
 
 
                     <!-- Your Referrals -->
