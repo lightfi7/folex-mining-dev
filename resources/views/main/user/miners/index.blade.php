@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                     <!-- estimated / actual for coins -->
-                    <div class="row">
+                    <!-- <div class="row">
                     @foreach ($total_power as $record)
                         @if (count($total_power) == 3)
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>
                     @endforeach
-                    </div>
+                    </div> -->
 
 
                     <!-- Your Referrals -->

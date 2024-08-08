@@ -67,10 +67,6 @@ class MinersController extends Controller
                             ->groupBy("hashings.name", "hashings.id")
                             ->orderBy("hashing_id", "asc")
                             ->get();
-                            // ->pluck("purchased", "hashing_name")
-                            // ->toArray();
-	//print($total_power);exit;
-	//dd($total_power);
                             
         $coin_data = CoinData::with("hashing")->where("is_active", 1)->get();
 
@@ -102,17 +98,15 @@ class MinersController extends Controller
                 }
             }
         }
-        //print($total_power);exit;
-	
-
-        // profits_by_coin
+       
+        
         $profit_by_coin = DB::select("select * from (select sum(amount) amount_sum, coin_data_id from ledgers where type=4 and user_id=? group by coin_data_id) a right join coin_data on coin_data.id=a.coin_data_id order by coin_data.id;", [Auth::user()->id]);
         foreach($profit_by_coin as $record) {
             if ($record->amount_sum === null) {
                 $record->amount_sum = 0;
             }
         }
-//        dd("profit_by_coin", $profit_by_coin);
+        
         $sum_of_profit_by_coin = collect($profit_by_coin)->sum('amount_sum');
 
         $me = User::where("id", Auth::user()->id)
@@ -120,8 +114,8 @@ class MinersController extends Controller
 
         $levelingService = new LevelingService();
         list($ref_level, $ref_progress, $ref_rate_sumup, $remained_referrals_for_next_level, $referrals_from_for_current_level) = $levelingService->checkLevel($me->referrals_cnt);
-        // dd($ref_rate_sumup);
-
+       
+        
         $amount_sum_by_referrals = Ledger::where("user_id", Auth::user()->id)->where("type", 3)->sum("amount");
         $earned_via_referral = to_cash_format_small($amount_sum_by_referrals);
 
