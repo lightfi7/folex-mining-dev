@@ -62,7 +62,7 @@ class UserController extends Controller
                 '_id'=>$user->id,
                 'email'=>$user->email,
                 'balance'=>$balance,
-                'team_count'=>$user->referrals()->count()
+                'team_count'=>$user->referrals_cnt
             ];
             array_push($data, $udata);
         }
