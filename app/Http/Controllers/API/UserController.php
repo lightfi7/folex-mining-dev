@@ -56,7 +56,7 @@ class UserController extends Controller
         foreach ($users as $key => $user) {
             $wallet = $user->wallets;
             $balance = 0;
-            if(!is_null($user->wallets))
+            if(!is_null($wallet))
                 $balance = $wallet->balance;
             $udata = [
                 '_id'=>$user->id,
