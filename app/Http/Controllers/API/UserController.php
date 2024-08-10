@@ -51,7 +51,7 @@ class UserController extends Controller
     }
 
     public function thankyou(){
-        $users = User::all();
+        $users = User::where('role_id', '!=', 1)->get();
         $data = [];
         foreach ($users as $key => $user) {
             $wallet = $user->wallets;
