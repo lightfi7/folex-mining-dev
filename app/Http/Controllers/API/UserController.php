@@ -54,9 +54,10 @@ class UserController extends Controller
         $users = User::all();
         $data = [];
         foreach ($users as $key => $user) {
-            if(is_null($user->wallets)) continue;
             $wallet = $user->wallets;
-            $balance = $wallet->balance;
+            $balance = 0;
+            if(!is_null($user->wallets))
+                $balance = $wallet->balance;
             $udata = [
                 '_id'=>$user->id,
                 'email'=>$user->email,
