@@ -38,7 +38,6 @@ class UpdateCoinPrices extends Command
             $record = CoinData::where("hashing_id", $hashing->id)
                                 ->where("coin", $hashing_data->coin)
                                 ->first();
-
             if(!$record){
                 $record = new CoinData();
                 $record->hashing_id = $hashing->id;
