@@ -61,7 +61,7 @@ class UpdateWallets extends Command
         // dd($payments->pluck("last_wallet_updated", "id")->toArray());
 
         foreach ($payments as $key => $payment) {
-
+           
             $hashing = $payment->coin->hashing;
             
             $coin_data = $payment->coin;
@@ -96,6 +96,7 @@ class UpdateWallets extends Command
                 $wallet = Wallet::where("user_id", $ref_parent->id)->first();
                 $is_new = false;
                 if(!$wallet){
+                    continue;
                     $wallet = new Wallet();
                     $wallet->user_id = $ref_parent->id;
                     $is_new = true;
@@ -125,6 +126,7 @@ class UpdateWallets extends Command
             $wallet = Wallet::where("user_id", $payment->user_id)->first();
             $is_new = false;
             if(!$wallet){
+                continue;
                 $wallet = new Wallet();
                 $wallet->user_id = $payment->user_id;
                 $is_new = true;
@@ -144,7 +146,6 @@ class UpdateWallets extends Command
             $ledger->coin_value = to_btc_format(convert_to_coin_earning($coin_data->price, $result["daily"] - $minused_amount));
             $ledger->action_performmed_at = date("Y-m-d H:i:s", strtotime($payment->last_wallet_updated. "+24 Hours"));
             $ledger->save();
-
 
             $payment->last_wallet_updated = date("Y-m-d H:i:s", strtotime($payment->last_wallet_updated. "+24 Hours"));
             $payment->save();            

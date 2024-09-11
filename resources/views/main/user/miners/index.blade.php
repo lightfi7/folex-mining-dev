@@ -75,15 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     @if(count($miners) > 0)
                                                     @foreach($miners as $key => $miner)
                                                     <tr class="miners-table-row">
-                                                        <td class="expanded"><span>+</span></td>
-                                                        <td class="collapsed"><span>-</span></td>
-                                                        <td data-label='{{__("Hashing")}}'>{{$miner->hashings_name." ".$miner->coin_display_name}}</td>
+                                                        <td></td>
+                                                        <!-- <td class="expanded"><span>+</span></td>
+                                                        <td class="collapsed"><span>-</span></td> -->
+                                                        <td data-label='{{__("Hashing")}}'>{{$miner->hashings->name." ".$miner->coin->coin_display_name}}</td>
                                                         <td data-label='{{__("Power")}}'>{{$miner->energy_bought}} {{$miner->coin_unit}}</td>
-                                                        <td data-label='{{__("Income")}}'>${{to_cash_format_small($miner->amount_deposit)}}</td>
+                                                        <td data-label='{{__("Deposited")}}'>${{to_cash_format_small($miner->amount_deposit)}}</td>
                                                         <td data-label='{{__("Coin Value")}}'>{{get_payent_method($miner->payment_method)}}</td>
                                                         <td data-label='{{__("Date")}}'>{{to_date($miner->created_at)}}</td>
                                                     </tr>
-                                                    <tr class="under-section">
+                                                    <!-- <tr class="under-section">
                                                         <td colspan="6">
                                                             <div>
                                                                 <span class="under-section-title">{{__("Deposited")}}:&nbsp;</span>
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                                 <span class="under-section-value">${{to_cash_format_small($miner->sum_amount)}}</span>
                                                             </div>
                                                         </td>
-                                                    </tr>
+                                                    </tr> -->
                                                     @endforeach
                                                     @else
                                                     <tr class="text-center">

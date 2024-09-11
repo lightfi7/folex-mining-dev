@@ -71,26 +71,55 @@
         @foreach ($coin_data as $coin_item)
         {!! "if(coin_data_selected == '$coin_item->id'){ production = get_$coin_item->id(p*".$unit_conversion[$coin_item->unit].") }" !!}
 
-        if(coin_data_selected == '{{$coin_item->id}}'){
+            if(coin_data_selected == '{{$coin_item->id}}'){
 
-            //Our Consumption
-            power_consumption_cost_in_Kwatt = $('.miner-select').find('.miner-select-item.active').data('consumption');
-            cost_per_kwh = $('.miner-select').find('.miner-select-item.active').data('cost');
-            power_consumption_cost = cost_per_kwh * (power_consumption_cost_in_Kwatt * p * {{$unit_conversion[$coin_item->unit]}} / 1000) / 1000 * 24
-            predict_price = cost_per_kwh * (power_consumption_cost_in_Kwatt * p * {{$unit_conversion[$coin_item->unit]}} / 1000) / 1000 * 24
-            var income = power_consumption_cost * predict_price / $splitfee ;
-            //Home Consumption
-            power_consumption_cost_home = $('#data-input-ghs-home').val() * (power_consumption_cost_in_Kwatt * p * {{$unit_conversion[$coin_item->unit]}});
+                // if(coin_data_selected == '{{$coin_item->id}}'){ production = get_$coin_item->id(p*{{$unit_conversion[$coin_item->unit]}}) }
 
-            //Total income without electricity
-            maintenance_fee = $('.miner-select').find('.miner-select-item.active').data('maintenance-fee');
-            var complete_income = $coin_price * production * (100 - maintenance_fee) / 100.0;
-            var complete_income_selected = $coin_data * coin_data_selected;
+                // $hash_price = $hashing->price_khs;   // usd$ per khs
+                // $p = $cash / $hash_price;
 
-            var income = complete_income * power_consumption_cost * predict_price / $splitfee / complete_income ;
-            var income_home = power_consumption_cost_home * predict_price / $splitfee/24.0/10000.0;
-            // var income = complete_income - power_consumption_cost;
-            // var income_home = complete_income - power_consumption_cost_home;
+                //Our Consumption
+                // power_consumption - electric comsume per 1KH/s
+                console.log("coin_item->unit", "{{$coin_item->unit}}");
+                console.log("$unit_conversion[$coin_item->unit]", "{{$unit_conversion[$coin_item->unit]}}");
+                power_consumption_cost_in_Kwatt = $('.miner-select').find('.miner-select-item.active').data('consumption');
+                cost_per_kwh = $('.miner-select').find('.miner-select-item.active').data('cost'); // cost_per_kwh, 0.02$/Kwh electic cost
+                // power_consumption_cost =  cost_per_kwh * ( power_consumption_cost_in_Kwatt ) * p * {{$unit_conversion[$coin_item->unit]}} / 1000;
+                // power_consumption_cost =  cost_per_kwh * ( power_consumption_cost_in_Kwatt ) * p * {{$unit_conversion[$coin_item->unit]}} / 1000000000;
+                power_consumption_cost =  cost_per_kwh * (power_consumption_cost_in_Kwatt)/1000 * 24;
+                // console.log("cost_per_kwh * power_consumption_cost_in_Kwatt * p", cost_per_kwh * power_consumption_cost_in_Kwatt * p);
+
+                // ( <total_hash> * 86400 ) / (<difficulty> * 4294967296) * <reward_block> * (0.99)
+
+                //Home Consumption
+                // power_consumption_cost_home = $('#data-input-ghs-home').val() * power_consumption_cost_in_Kwatt * p * {{$unit_conversion[$coin_item->unit]}} / 1000000000;
+                power_consumption_cost_home = $('#data-input-ghs-home').val() * (power_consumption_cost_in_Kwatt)/1000 * 24;
+
+                console.log('>>>>>>>#data-input-ghs-home.val(): ', $('#data-input-ghs-home').val());
+
+                //Total income without electricity
+                // var complete_income = ( $coin_price / (1 / production) );
+                maintenance_fee = $('.miner-select').find('.miner-select-item.active').data('maintenance-fee');
+                console.log(">>>>>>>>>>maintenance_fee: ", maintenance_fee);
+                console.log(">>>>>>>>>>$coin_price: ", $coin_price);
+                var complete_income = $coin_price * production * (100 - maintenance_fee) / 100.0;
+
+                var income = complete_income - power_consumption_cost;
+                var income_home = complete_income - power_consumption_cost_home;
+
+                console.log("p:", p);
+                console.log("$unit_conversion[$coin_item->unit]", "{{$unit_conversion[$coin_item->unit]}}");
+                console.log("production:", production);
+                console.log("'#data-input-ghs-home'.val():", $('#data-input-ghs-home').val());
+                console.log("power_consumption_cost_in_Kwatt:", power_consumption_cost_in_Kwatt);
+                console.log("cost_per_kwh:", cost_per_kwh);
+                console.log("power_consumption_cost:", power_consumption_cost);
+                console.log("power_consumption_cost_home:", power_consumption_cost_home);
+                console.log("complete_income:", complete_income);
+                console.log("income:", income);
+                console.log("income_home:", income_home);
+
+                setResult(income, income_home);
             setResult(income, income_home);
         }
         @endforeach
@@ -156,6 +185,7 @@
         variable_setup();
 
         $('.miner-select').on('click', '.miner-select-item:not(.active)', function (event) {
+            cos
 
             variable_setup();
 

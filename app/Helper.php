@@ -470,7 +470,7 @@ function calculate_income($p, $coin_data){
     //Our Consumption
     $power_consumption_cost_in_Kwatt = $hashing->power_consumption/ 1000;
     $cost_per_kwh = $hashing->cost_per_kwh;
-    $power_consumption_cost =  $cost_per_kwh * $power_consumption_cost_in_Kwatt * $p;
+    $power_consumption_cost =  $cost_per_kwh * $power_consumption_cost_in_Kwatt;
     
     
     $result["daily"] = $income - $power_consumption_cost;
@@ -547,7 +547,8 @@ function get_referral_parent($id, $step) {
     $record = null;
     for ($i = 0; $i < $step; $i++) {
         $record = DB::table("users")->where('referred_by', '=', $id)->first();
-        $id = $record->id;
+        if($record)
+            $id = $record->id;
     }
     // dd($level_count);
     return $record;
