@@ -546,9 +546,13 @@ function get_referral_counts_for_each_level($user_id) {
 function get_referral_parent($id, $step) {
     $record = null;
     for ($i = 0; $i < $step; $i++) {
-        $record = DB::table("users")->where('referred_by', '=', $id)->first();
+        $record = DB::table("users")->where('id', '=', $id)->first();
         if($record)
-            $id = $record->id;
+        {
+            $ref_record = DB::table("users")->where('id', '=', $record->referred_by)->first();
+            if($ref_record)
+            $id = $ref_record->id;
+        }
     }
     // dd($level_count);
     return $record;

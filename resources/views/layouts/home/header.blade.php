@@ -83,6 +83,23 @@
                         <a href="{{url('register')}}" class="btn btn-lg">{{__("Register")}}</a>
                     </div>
                     @endif
+
+                    <div class="d-inline-block top-header-area">
+
+                <!-- Adding Telegram and WhatsApp icons -->
+                <li>
+            <a class="nav-link" href="https://t.me/your-telegram-invite-link" target="_blank">
+                <i class="fa fa-telegram"></i> Telegram
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="https://wa.me/your-whatsapp-invite-link" target="_blank">
+                <i class="fa fa-whatsapp"></i> WhatsApp
+            </a>
+        </li>
+
+                </div>
+
                 </div>              
             </div>
         </div>

@@ -89,7 +89,7 @@ class UpdateWallets extends Command
                 // 5. LvL: 0.25%
                 $ref_parent = get_referral_parent($payment->user_id, $i);
                 if ($ref_parent == null) {
-                    break;
+                    continue;
                 }
                 $ref_balance_to_add = $result["daily"] * $percents[$i-1] / 100;
                 // USER WALLET SETUP
