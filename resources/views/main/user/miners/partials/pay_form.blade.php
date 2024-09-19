@@ -14,7 +14,7 @@
                     <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5 px-3 px-xxl-3 py-3">
                         <div class="card-body h-100">
 
-                            <h5 class="mb-5">{{__("You will be redirected to coinbase for making payment")}}.</h5>
+                            <h5 class="mb-5">{{__("You will be redirect for making payment")}}.</h5>
                             <div class="row">
 
                                 <div class="col-md-6 pb-3 mb-md-4">

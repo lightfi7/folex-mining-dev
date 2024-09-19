@@ -175,7 +175,7 @@ class DepositRequestController extends Controller
             $referred_by = User::where("id", $user->referred_by)->first();
             if($referred_by){
                 //UPDATING REFERRER WALLET
-                $referr_wallet = Wallet::where("user_id", $record->referred_by)->first();
+                $referr_wallet = Wallet::where("user_id",$referred_by->id)->first();
                 if(!$referr_wallet){
                     $referr_wallet = new Wallet();
                     $referr_wallet->public_id = (string) Str::uuid();
