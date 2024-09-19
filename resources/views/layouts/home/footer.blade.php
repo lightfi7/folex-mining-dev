@@ -8,7 +8,7 @@
                     </div>
                     <div class="footer-icon">
                         <ul>
-                            <li><a href="https://t.me/cloudminepool_mining"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+                            <li><a target="_blank" href="https://t.me/cloudminepool_mining"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
                             {{-- <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> --}}
                         </ul>
                     </div>
