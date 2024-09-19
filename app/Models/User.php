@@ -36,6 +36,7 @@ class User extends Authenticatable
         'role_id',
         'email',
         'password',
+        'referred_by',
         'referral',
         'two_factor_secret'
     ];
