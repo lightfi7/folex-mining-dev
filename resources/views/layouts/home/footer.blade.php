@@ -7,10 +7,12 @@
                         <a href="#"><img src="{{$site_data["site_logo"]}}" style="max-height:55px !important" alt="{{$site_data["site_name"]}}"></a>
                     </div>
                     <div class="footer-icon">
-                        <ul>
-                            <li><a target="_blank" href="https://t.me/cloudminepool_mining"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
-                            {{-- <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> --}}
-                        </ul>
+                    <ul>
+                            
+                            <li><a target="_blank" href="https://t.me/cloudminepoolgroup"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+                                                       <li><a target="_blank" href="https://chat.whatsapp.com/JrDOCeeR6h0GtzcV5Imi9c"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                                                   </ul>
+                           
                     </div>
                 </div>
             </div>
