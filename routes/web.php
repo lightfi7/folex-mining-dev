@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 Route::middleware('locale')->group(function () {
 
     //Auth Less Routes
-    Route::get('test', controller_path() . 'TestController@test');
     Route::get('/', controller_path() . 'CalculationController@index');
 
 
