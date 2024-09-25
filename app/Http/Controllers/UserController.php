@@ -168,10 +168,10 @@ class UserController extends Controller
         $user = User::where("referral", $user_id)->first();
         $wallet = Wallet::where("user_id", $user->id)->first();
 
-        $total_deposited = to_cash_format_small(Ledger::where("user_id", $user->id)->where("type", 2)->sum("amount"));
-        $total_withdrawn = to_cash_format_small(Ledger::where("user_id", $user->id)->where("type", 1)->sum("amount"));
-        $total_earned_referral = to_cash_format_small(Ledger::where("user_id", $user->id)->where("type", 3)->sum("amount"));
-        $total_earned = to_cash_format_small(Ledger::where("user_id", $user->id)->where("type", 4)->sum("amount"));
+        $total_deposited = to_cash_format_small(Ledger::where("user_id", $user->id)->whereNotNull('payment_id')->where("type", 2)->sum("amount"));
+        $total_withdrawn = to_cash_format_small(Ledger::where("user_id", $user->id)->whereNotNull('payment_id')->where("type", 1)->sum("amount"));
+        $total_earned_referral = to_cash_format_small(Ledger::where("user_id", $user->id)->whereNotNull('payment_id')->where("type", 3)->sum("amount"));
+        $total_earned = to_cash_format_small(Ledger::where("user_id", $user->id)->whereNotNull('payment_id')->where("type", 4)->sum("amount"));
         $total_wallet = $wallet ? to_cash_format_small($wallet->balance) : "0.00";
 
         $title_plurar = "Ledger";
@@ -221,7 +221,7 @@ class UserController extends Controller
                     return ($records->ledger_users ? ($records->ledger_users->users ? $records->ledger_users->users->email : "") : "");
                 } else if (in_array($records->payment_method, [1, 2, 3])) {
                     return $records->type == 1 ? $this->method[$records->payment_method] : ($this->method[$records->payment_method] . " (" . $records->status_text . ")");
-                } else {
+                } else if(!is_null($records->payment_method)) {
                     return $records->type == 4 ? "Auto" : $this->method[$records->payment_method];
                 }
             })

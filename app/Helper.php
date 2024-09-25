@@ -544,7 +544,7 @@ function get_referral_counts_for_each_level($user_id) {
 }
 
 function get_referral_parent($id, $step) {
-    $record = null;
+    $ref_record = null;
     for ($i = 0; $i < $step; $i++) {
         $record = DB::table("users")->where('id', '=', $id)->first();
         if($record)
@@ -555,7 +555,7 @@ function get_referral_parent($id, $step) {
         }
     }
     // dd($level_count);
-    return $record;
+    return $ref_record;
 }
 
 function get_user_balance($user_id=""){
@@ -591,7 +591,11 @@ function languages(){
         "es" => [__("Spanish"), url('plugins\lang_fonts\flags\1x1\es.svg')],
         "ru" => [__("Russian"), url('plugins\lang_fonts\flags\1x1\ru.svg')],
         "pt" => [__("Portuguese "), url('plugins\lang_fonts\flags\1x1\pt.svg')],
-        "it" => [__("Italian"), url('plugins\lang_fonts\flags\1x1\it.svg')]
+        "it" => [__("Italian"), url('plugins\lang_fonts\flags\1x1\it.svg')],
+        "ar" => [__("Arabic"), url('plugins\lang_fonts\flags\1x1\ar.svg')],
+        "be" => [__("Bengali"), url('plugins\lang_fonts\flags\1x1\be.svg')],
+        "hi" => [__("Hindi"), url('plugins\lang_fonts\flags\1x1\in.svg')],
+        "ur" => [__("Urdu"), url('plugins\lang_fonts\flags\1x1\pk.svg')]
     ];
 }
 

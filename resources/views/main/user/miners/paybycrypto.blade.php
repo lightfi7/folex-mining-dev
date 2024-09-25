@@ -12,7 +12,7 @@
             <div class="container-fluid px-0">
                 <div class="col-xxl-12 mb-4">
                     <div class="pb-2 pt-3 mb-4 mb-xl-5">
-                        <h4>{{__("Tron network")}}</h4>
+                        <h4>{{__("TRC20 USDT")}}</h4>
                         @include("shared.alerts")
 
                         <!-- TRON Network Icon -->

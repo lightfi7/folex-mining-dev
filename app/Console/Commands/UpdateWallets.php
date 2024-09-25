@@ -89,14 +89,14 @@ class UpdateWallets extends Command
                 // 5. LvL: 0.25%
                 $ref_parent = get_referral_parent($payment->user_id, $i);
                 if ($ref_parent == null) {
-                    continue;
+                    break;
                 }
                 $ref_balance_to_add = $result["daily"] * $percents[$i-1] / 100;
                 // USER WALLET SETUP
                 $wallet = Wallet::where("user_id", $ref_parent->id)->first();
                 $is_new = false;
                 if(!$wallet){
-                    continue;
+                    break;
                     $wallet = new Wallet();
                     $wallet->user_id = $ref_parent->id;
                     $is_new = true;
